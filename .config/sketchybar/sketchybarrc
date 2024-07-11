@@ -5,7 +5,7 @@ config_dir="~/.config/sketchybar/configs"
 
 # Color picker: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-# Bar
+# Menu Bar
 sketchybar --bar position=top \
            height=30 \
            y_offset=3 \
@@ -19,7 +19,7 @@ sketchybar --bar position=top \
            padding_right=12 \
            shadow=on
 
-# Default
+# Default Properties
 default=(
   padding_left=5
   padding_right=5
@@ -34,14 +34,14 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-# Apple Icon
+# 1st Left Apple Icon
 sketchybar --add item appl.logo left \
            --set appl.logo icon=􀣺 label.drawing=off \
            --set apple y_offset=1 \
            --set background.padding_right=5
            --set background.padding_left=2
 
-# Mission Control Spaces
+# 2nd Left Mission Control Spaces
 spaces=("main" "edit" "code" "media" "misc")
 space_icons=("􀀜" "􀨺" "􀊕" "􀩼" "􀌍" "6" "7" "8" "9" "10")
 space_colors=("0xffc46aff" "0xff4b9cff" "0xe615e82e" "0xe679b9a3" "0xe6e02e85")
@@ -74,22 +74,33 @@ done
 #                                background.corner_radius=4  \
 #                                background.height=20
 
-# Focused App Print
+# 3rd Left Focused App
 sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$plugin_dir/front_app.sh" \
            --subscribe front_app front_app_switched
 
-# Battery
+# 4th Center Stacks
+sketchybar -m --add item stack_sep center \
+              --add item stack center \
+              --set stack script="$plugin_dir/stack.sh" \
+              --subscribe stack window_focus front_app_switched space_change title_change \
+              --set stack_sep drawing=off \
+              --set stack drawing=off \
+              --set stack update_freq=0
+#
+# 1st Right Battery
 sketchybar -m --add item battery right \
               --set battery y_offset=1 \
               --set battery update_freq=60 script="$plugin_dir/battery.sh" \
               --subscribe battery system_woke power_source_change
 
-# Clock and Volume
+# 2nd Right Date and Clock
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=􀐫  script="$plugin_dir/clock.sh" \
-           --set clock y_offset=1 \
-           --add item volume right \
+           --set clock y_offset=1
+
+# 3rd Right Volume
+sketchybar --add item volume right \
            --set volume y_offset=1 \
            --set volume script="$plugin_dir/volume.sh" \
            --subscribe volume volume_change
