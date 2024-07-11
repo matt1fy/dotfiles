@@ -1,0 +1,45 @@
+# Modes
+:: main : yabai -m config active_window_border_color 0xff775759
+:: window @ : yabai -m config active_window_border_color 0xff24ccaa
+
+# Mode Navigation
+hyper - x ; window
+window < escape ; main
+
+# Resize Window
+ctrl + shift - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
+ctrl + shift - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+ctrl + shift - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+ctrl + shift - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+
+# Float Window
+hyper - 0x13 : yabai -m window --toggle float --grid 5:5:1:1:3:3
+
+# scroll through stack
+hyper - 0x14 : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+hyper - 0x12 : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+
+# application specific bindings
+#
+# cmd - n [
+#     "kitty"       : echo "hello kitty"
+#     *             : echo "hello everyone"
+#     "qutebrowser" : echo "hello qutebrowser"
+#     "terminal"    ~
+#     "finder"      : false
+# ]
+
+# specify a file that should be included as an additional config-file.
+# treated as an absolutepath if the filename begins with '/' otherwise
+# the file is relative to the path of the config-file it was loaded from.
+#
+# .load "/Users/Koe/.config/partial_skhdrc"
+# .load "partial_skhdrc"
+
+# prevent skhd from monitoring events for specific applications.
+#
+# .blacklist [
+#    "kitty"
+#    "terminal"
+#    "qutebrowser"
+# ]
