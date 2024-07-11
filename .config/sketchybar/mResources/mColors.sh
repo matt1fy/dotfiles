@@ -10,7 +10,7 @@ export BLUE=0xff4b9cff
 export TEAL=0xe679b9a3
 export SPOTIFYGREEN=0xe615e82e
 export HOTPINK=0xe6e02e85
-export
+export SOFTPURPLE=0xfff1e1ff
 export
 export
 export
@@ -27,7 +27,7 @@ export
 
 
 
-# Color Palette -- gruvbox
+
 export RED=0xffcc241d
 export GREEN=0xff98971a
 export BLUE=0xff458588
@@ -43,8 +43,8 @@ export ITEM_COLOR=0xff32302f
 # General bar colors
 export BAR_COLOR=0x703c3836 #$GREY # Grey bar
 export ICON_COLOR=$WHITE # Color of all icons
-export LABEL_COLOR=$WHITE # Color of all labelsa
-export ALT_LABEL_COLOR=$WHITE # Alternative label color
+export LABEL_COLOR=$WHITE # Color of all labels
+export ALT_LABEL_COLOR=$SOFTPURPLE # Alternative label color
 
 export SPACE_BACKGROUND=$ITEM_COLOR
 export SPACE_BACKGROUND2=0xff282828
