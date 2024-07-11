@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sketchybar -m --add item battery right                            \
+              --set battery update_freq=30                        \
+              --set battery y_offset=1                            \
+              script="~/.config/sketchybar/plugins/battery.sh"    \
+              --subscribe battery system_woke power_source_change

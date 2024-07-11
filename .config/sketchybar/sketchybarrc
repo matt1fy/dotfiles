@@ -1,0 +1,98 @@
+# Created by Matt1fy
+
+plugin_dir="~/.config/sketchybar/plugins"
+config_dir="~/.config/sketchybar/configs"
+
+# Color picker: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+# Bar
+sketchybar --bar position=top \
+           height=30 \
+           y_offset=3 \
+           border_width=2.5 \
+           blur_radius=100 \
+           color=0x732a2735 \
+           border_color=0xedf0c553 \
+           margin=6 \
+           corner_radius=11 \
+           padding_left=12 \
+           padding_right=12 \
+           shadow=on
+
+# Default
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Avenir Next:Heavy:16.0"
+  label.font="SF Pro:Bold:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=3
+  icon.padding_right=3
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+# Apple Icon
+sketchybar --add item appl.logo left \
+           --set appl.logo icon=􀣺 label.drawing=off \
+           --set apple y_offset=1 \
+           --set background.padding_right=5
+           --set background.padding_left=2
+
+# Mission Control Spaces
+spaces=("main" "edit" "code" "media" "misc")
+space_icons=("􀀜" "􀨺" "􀊕" "􀩼" "􀌍" "6" "7" "8" "9" "10")
+space_colors=("0xffc46aff" "0xff4b9cff" "0xe615e82e" "0xe679b9a3" "0xe6e02e85")
+for i in "${!space_icons[@]}"
+do
+  sid="$(($i+1))"
+  space=(
+    space="$sid"
+    icon="${space_icons[i]}"
+    icon.padding_left=3
+    icon.padding_right=3
+    icon.highlight_color="${space_colors[i]}"
+    icon.padding_left=3
+    icon.padding_right=3
+    icon.background.color="${space_colors[i]}"
+    icon.background.height=2.5
+    icon.background.y_offset=-20
+    background.padding_left=2
+    background.padding_right=2
+    label.drawing=off
+    script="$plugin_dir/space.sh"
+    click_script="yabai -m space --focus $sid"
+  )
+  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+done
+
+# Bracket Spaces
+# sketchybar --add bracket spaces space."$sid"
+#           --set         spaces background.color=0xffffffff \
+#                                background.corner_radius=4  \
+#                                background.height=20
+
+# Focused App Print
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=off script="$plugin_dir/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+# Battery
+sketchybar -m --add item battery right \
+              --set battery y_offset=1 \
+              --set battery update_freq=60 script="$plugin_dir/battery.sh" \
+              --subscribe battery system_woke power_source_change
+
+# Clock and Volume
+sketchybar --add item clock right \
+           --set clock update_freq=10 icon=􀐫  script="$plugin_dir/clock.sh" \
+           --set clock y_offset=1 \
+           --add item volume right \
+           --set volume y_offset=1 \
+           --set volume script="$plugin_dir/volume.sh" \
+           --subscribe volume volume_change
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
