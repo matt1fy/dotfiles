@@ -2,6 +2,7 @@
 
 plugin_dir="~/.config/sketchybar/plugins"
 config_dir="~/.config/sketchybar/configs"
+resource_dir="~/.config/sketchybar/mResources"
 
 # Color picker: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
@@ -99,11 +100,14 @@ sketchybar --add item clock right \
            --set clock update_freq=10 icon=􀐫  script="$plugin_dir/clock.sh" \
            --set clock y_offset=1
 
-# 3rd Right Volume
+# 4th Right Volume
 sketchybar --add item volume right \
            --set volume y_offset=1 \
            --set volume script="$plugin_dir/volume.sh" \
            --subscribe volume volume_change
+
+# 5th Right Disk Monitor/
+source "$item_dir/itemDiskmonitor.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
