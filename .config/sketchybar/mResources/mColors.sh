@@ -4,7 +4,8 @@
 
 # mColor Palette
 export BLACK=0xff282828 # 282828
-export WHITE=0xffebdbb2 # ebdbb2
+export WHITE=0xffffffff # ffffff
+export OFFWHITE=0xffebdbb2 # ebdbb2
 export GREY=0xff928374 # 928374
 export SKY=0xff83a598 # 83a598
 
@@ -37,7 +38,7 @@ export OPEN_APPS_BACKGROUND=$ITEM_COLOR
 export CALENDAR_BACKGROUND=0xffb8c0e0 # b8c0e0
 
 # General bar colors
-export BAR_COLOR=0x703c3836 #$GREY # Grey bar
+export BAR_COLOR=0x732a2735 # 2a2735
 export ICON_COLOR=$WHITE # Color of all icons
 export LABEL_COLOR=$WHITE # Color of all labels
 export ALT_LABEL_COLOR=$SOFTPURPLE # Alternative label color

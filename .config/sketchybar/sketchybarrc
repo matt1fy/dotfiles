@@ -13,17 +13,17 @@ plugin_dir="$HOME/.config/sketchybar/plugins"
 # Color picker: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker  OR  http://peteroupc.github.io/colorpicker/demo.html
 
 # Menu Bar
-sketchybar --bar position=top \
-           height=30 \
-           y_offset=3 \
-           border_width=2.5 \
-           blur_radius=100 \
-           color=0x732a2735 \
-           border_color=$ACCENTGOLDII \
-           margin=6 \
-           corner_radius=11 \
-           padding_left=12 \
-           padding_right=12 \
+sketchybar --bar position=top           \
+           height=30                    \
+           y_offset=3                   \
+           border_width=2.5             \
+           blur_radius=100              \
+           color=$BAR_COLOR             \
+           border_color=$ACCENTGOLDII   \
+           margin=6                     \
+           corner_radius=11             \
+           padding_left=12              \
+           padding_right=12             \
            shadow=on
 
 # Default Properties
@@ -41,12 +41,46 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-# 1st Left Apple Icon
-sketchybar --add item appl.logo left \
-           --set appl.logo icon=􀣺 label.drawing=off \
-           --set apple y_offset=1 \
-           --set background.padding_right=5
-           --set background.padding_left=2
+POPUP_OFF="sketchybar --set apple.logo popup.drawing=off"
+POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+
+sketchybar --add item           apple.logo left                             \
+                                                                            \
+           --set apple.logo     icon=􀣺                                      \
+                                icon.font="SF Pro:Black:16.0"               \
+                                icon.color=0xffffffff                       \
+                                y_offset=1                                  \
+                                background.padding_left=2                   \
+                                background.padding_right=5                  \
+                                label.drawing=off                           \
+                                click_script="$POPUP_CLICK_SCRIPT"          \
+                                popup.background.border_width=2             \
+                                popup.background.corner_radius=3            \
+                                popup.background.border_color=0x732a2735    \
+                                                                            \
+           --default background.padding_left=5                              \
+                     background.padding_right=5                             \
+                     icon.padding_right=5                                   \
+                     icon.font="SF Pro:Bold:16.0"                           \
+                     label.font="SF Pro:Semibold:13.0"                      \
+                                                                            \
+           --add item           apple.prefs popup.apple.logo                \
+           --set apple.prefs    icon=􀍟                                     \
+                                label="Preferences"                         \
+                                click_script="open -a 'System Preferences';
+                                              $POPUP_OFF"                   \
+                                                                            \
+           --add item           apple.activity popup.apple.logo             \
+           --set apple.activity icon=􀟪                                     \
+                                label="Activity"                            \
+                                click_script="open -a 'Activity Monitor';
+                                              $POPUP_OFF"                   \
+                                                                            \
+           --add item           apple.lock popup.apple.logo                 \
+           --set apple.lock     icon=􀒳                                     \
+                                label="Lock Screen"                         \
+                                click_script="pmset displaysleepnow;
+                                              $POPUP_OFF"
 
 # 2nd Left Mission Control Spaces
 spaces=("main" "edit" "code" "media" "misc")
@@ -112,96 +146,9 @@ sketchybar --add item volume right \
            --set volume script="$plugin_dir/volume.sh" \
            --subscribe volume volume_change
 
-# Spotify sigh
-SPOTIFY_EVENT="com.apple.Music.playerInfo"
-POPUP_SCRIPT="sketchybar -m --set spotify.cover popup.drawing=toggle"
-
-sketchybar --add       event           spotify_change $SPOTIFY_EVENT       \
-           --add       item            spotify.cover center                \
-           --set       spotify.cover   click_script="$POPUP_SCRIPT"        \
-                                       popup.horizontal=on                 \
-                                       popup.align=center                  \
-                                       popup.background.image.scale=0.5    \
-                                       popup.background.corner_radius=0    \
-                                       icon.drawing=off                    \
-                                       label.drawing=off                   \
-                                                                           \
-           --add       item            spotify.title q                     \
-           --set       spotify.title   click_script="$POPUP_SCRIPT"        \
-                                       icon=􀑪                              \
-                                       drawing=off                         \
-                                       script="$plugin_dir/spotify.sh"     \
-                                       background.padding_right=0          \
-           --subscribe spotify.title   mouse.entered mouse.exited          \
-                                       mouse.exited.global                 \
-                                                                           \
-           --add       item            spotify.artist e                    \
-           --set       spotify.artist  click_script="$POPUP_SCRIPT"        \
-                                       icon=􀓤                              \
-                                       drawing=off                         \
-                                       background.padding_left=0           \
-                                       script="$plugin_dir/spotify.sh"     \
-           --subscribe spotify.artist  mouse.entered mouse.exited          \
-                                       mouse.exited.global                 \
-                                                                           \
-           --add       item            spotify.back popup.spotify.cover    \
-           --set       spotify.back    icon=􀊎                              \
-                                       icon.padding_left=5                 \
-                                       icon.padding_right=5                \
-                                       script="$plugin_dir/spotify.sh"     \
-                                       label.drawing=off                   \
-           --subscribe spotify.back    mouse.clicked                       \
-                                                                           \
-           --add       item            spotify.play popup.spotify.cover    \
-           --set       spotify.play    icon=􀊔                              \
-                                       icon.padding_left=5                 \
-                                       icon.padding_right=5                \
-                                       updates=on                          \
-                                       label.drawing=off                   \
-                                       script="$plugin_dir/spotify.sh"     \
-           --subscribe spotify.play    mouse.clicked spotify_change        \
-                                                                           \
-           --add       item            spotify.next popup.spotify.cover    \
-           --set       spotify.next    icon=􀊐                              \
-                                       icon.padding_left=5                 \
-                                       icon.padding_right=10               \
-                                       label.drawing=off                   \
-                                       script="$plugin_dir/spotify.sh"     \
-           --subscribe spotify.next    mouse.clicked                       \
-                                                                           \
-           --add       item            spotify.shuffle popup.spotify.cover \
-           --set       spotify.shuffle icon=􀊝                              \
-                                       icon.highlight_color=0xff1DB954     \
-                                       icon.padding_left=5                 \
-                                       icon.padding_right=5                \
-                                       label.drawing=off                   \
-                                       script="$plugin_dir/spotify.sh"     \
-           --subscribe spotify.shuffle mouse.clicked                       \
-                                                                           \
-           --add       item            spotify.repeat popup.spotify.cover  \
-           --set       spotify.repeat  icon=􀊞                              \
-                                       icon.highlight_color=0xff1DB954     \
-                                       icon.padding_left=5                 \
-                                       icon.padding_right=5                \
-                                       label.drawing=off                   \
-                                       script="$plugin_dir/spotify.sh"     \
-           --subscribe spotify.repeat  mouse.clicked                       \
-                                                                           \
-           --add      bracket          spotify spotify.back                \
-                                               spotify.play                \
-                                               spotify.next                \
-                                               spotify.shuffle             \
-                                               spotify.repeat              \
-           --set      spotify          blur_radius=30                      \
-                                       background.color=0x60000000         \
-                                       background.corner_radius=9          \
-                                       background.drawing=on               \
-                                       drawing=off
-
-
 # 5th Right Disk Monitor
-# source "$item_dir/itemDiskmonitor.sh"
+source "$item_dir/itemDiskmonitor.sh"
 # source "$item_dir/itemNetwork.sh"
-# source "$item_dir/spotify.sh"
+source "$item_dir/spotify.sh"
 
 sketchybar --update

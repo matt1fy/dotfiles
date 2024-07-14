@@ -18,7 +18,7 @@ sketchybar -m --add item network_up right \
                                  update_freq=1\
 
 sketchybar --add bracket network_info network_up network_down \
-           --set network_info background.color=0xff32302f  \
+           --set network_info background.color=$BAR_COLOR \
                               background.corner_radius=3 \
                               background.height=26 \
                               background.padding_right=14 \

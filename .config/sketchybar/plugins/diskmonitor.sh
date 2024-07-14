@@ -2,7 +2,7 @@
 
 # Created by Matt1fy
 
-source "$resource_dir/mColors.sh"
+source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
 
 update() {
 PERCENTAGE=$(df -H /System/Volumes/Data | awk 'END {print $5}' | sed 's/%//')
@@ -12,11 +12,11 @@ COLOR=$LABEL_COLOR
 case ${PERCENTAGE} in
   9[8-9] | 100)
     ICON="󰪥"
-    COLOR=$RED
+    COLOR=$BLACK
     ;;
   8[8-9] | 9[0-7])
     ICON="󰪤"
-    COLOR=$ORANGE
+    COLOR=$RED
     ;;
   7[6-9] | 8[0-7])
     ICON="󰪣"
@@ -60,7 +60,7 @@ label_toggle() {
     PADDING="0"
   else
     DRAWING="on"
-    PADDING="20"
+    PADDING="32"
   fi
 
   sketchybar --set $NAME.value label.drawing=$DRAWING \
