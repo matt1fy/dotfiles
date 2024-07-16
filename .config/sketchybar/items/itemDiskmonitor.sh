@@ -3,7 +3,7 @@
 # Created by Matt1fy
 
 diskmonitor=(
-  icon.font="Zed Mono:Regular:24"
+  icon.font="Zed Mono:Regular:20"
   icon.padding_right=20
   label.drawing=off
   y_offset=1

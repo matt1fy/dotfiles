@@ -8,6 +8,9 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
 
+# yabai -m space --create [<SPACE_SEL>]
+# yabai -m space --display <DISPLAY_SEL>
+
 # Global settings
 yabai -m config                                    \
     external_bar                 all:32:0          \
@@ -25,13 +28,7 @@ yabai -m config                                    \
     window_opacity               on                \
     active_window_opacity        1.0               \
     normal_window_opacity        0.85              \
-    window_border                on                \
-    window_border_hidpi          on                \
-    window_border_width          2.5               \
-    window_border_radius         12                \
-    active_window_border_color   $ACCENTGOLDII     \
-    normal_window_border_color   $TRANSPARENT      \
-    insert_feedback_color        0xa61becac        \
+    insert_feedback_color        $PASTELPURPLE     \
     split_ratio                  0.50              \
     split_type                   auto              \
     auto_balance                 off               \
@@ -46,7 +43,7 @@ yabai -m config                                    \
     mouse_action2                resize            \
     mouse_drop_action            stack
 
-# insert_feedback_color old=0xffd75f5f
+# insert_feedback_color old=0xffd75f5f old2=0xa61becac
 
 # RULES
 # Exclude problematic apps from being managed
@@ -67,8 +64,7 @@ yabai -m rule --add app="^iTerm2$" space=^4
 
 yabai -m config layout bsp
 
+# Set up spaces after applying all configuration
+# source "$HOME/.config/yabai/_spaces.sh"
+
 echo "yabai configuration loaded.."
-
-
-# TODO draw active window border and border color follow associated spaces
-# OR border color as an indicator for the active skhd mode

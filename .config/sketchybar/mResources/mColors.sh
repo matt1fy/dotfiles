@@ -9,9 +9,10 @@ export OFFWHITE=0xffebdbb2 # ebdbb2
 export GREY=0xff928374 # 928374
 export SKY=0xff83a598 # 83a598
 
+export PASTELPURPLE=0xb3715eac # 715eac
 export PURPLE=0xffc46aff # c46aff
-export HOTPINK=0xe6e02e85 # e02e85
 export SOFTPURPLE=0xfff1e1ff # f1e1ff
+export HOTPINK=0xe6e02e85 # e02e85
 export MAGENTA=0xffb16286 # b16286
 export RED=0xffcc241d # cc241d
 export ORANGE=0xffd65d0e # d65d0e

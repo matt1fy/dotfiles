@@ -24,19 +24,15 @@ case ${PERCENTAGE} in
     ;;
   6[4-9] | 7[0-5])
     ICON="󰪢"
-    COLOR=$SPOTIFYGREEN
     ;;
   5[2-9] | 6[0-3])
     ICON="󰪡"
-    COLOR=$SPOTIFYGREEN
     ;;
   4[0-9] | 5[0-1])
     ICON="󰪠"
-    COLOR=$SPOTIFYGREEN
     ;;
   2[8-9] | 3[0-9])
     ICON="󰪟"
-    COLOR=$SPOTIFYGREEN
     ;;
   1[6-9] | 2[0-7])
     ICON="󰪞"

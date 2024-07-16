@@ -13,7 +13,7 @@ fi
 # Use a larger font for the unicode dots
 LAST=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
 if [[ $LAST -gt 10 ]]; then
-  sketchybar -m --set stack label.font="Zed Mono:Bold:13.0" \
+  sketchybar -m --set stack label.font="Zed Mono:Bold:11.0" \
                 --set stack label=$(printf "[%s/%s]" "$CURRENT" "$LAST") \
                 --set stack_sep drawing=on \
                 --set stack drawing=on
@@ -41,6 +41,10 @@ done
 # Display Indicator
 sketchybar -m --set stack label=$(printf "%s" ${dots[@]}) \
               --set stack_sep drawing=on \
-              --set stack drawing=on
+              --set stack drawing=on \
+              --set stack_sep background.padding_left=-15 \
+              --set stack background.padding_left=-15 \
+              --set stack_sep y_offset=1 \
+              --set stack y_offset=1
 
 # sauce https://github.com/FelixKratz/SketchyBar/discussions/12?sort=new#discussioncomment-1263547

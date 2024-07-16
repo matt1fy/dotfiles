@@ -4,6 +4,10 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config
+source ~/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -112,15 +116,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias zshr="source ~/.zshrc"
+alias zshe="vi ~/.zshrc"
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias oz="open -a"
+alias oz="open -a "\""zed"\"""
+alias trasha="rm -rf ~/.Trash/*"
+alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

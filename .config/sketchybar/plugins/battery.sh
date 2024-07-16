@@ -23,7 +23,7 @@ esac
 
 if [[ "$CHARGING" != "" ]]; then
   ICON="􀢋"
-  COLOR="0xffffffff"
+  COLOR="0xe615e82e"
 fi
 
 # Normal: 0xcc86ec1a Green
@@ -32,4 +32,4 @@ fi
 
 # The item invoking this script (name $NAME) will get its icon and label
 # updated with the current battery status
-sketchybar --set "$NAME" icon="$ICON" icon.color="$COLOR" label="${PERCENTAGE}%"
+sketchybar --set "$NAME"  label="${PERCENTAGE}%" icon="$ICON" icon.color="$COLOR"
