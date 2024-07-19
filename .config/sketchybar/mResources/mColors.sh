@@ -16,6 +16,7 @@ export HOTPINK=0xe6e02e85 # e02e85
 export MAGENTA=0xffb16286 # b16286
 export RED=0xffcc241d # cc241d
 export ORANGE=0xffd65d0e # d65d0e
+export ORANGELITE=0xffff9853 # ff9853
 export YELLOW=0xffd79921 # d79921
 export SPOTIFYGREEN=0xe615e82e # 15e82e
 export GREEN=0xff98971a # 98971a

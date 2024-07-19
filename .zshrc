@@ -4,16 +4,17 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config
-source ~/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
+
+# Path to my Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+source $HOME/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
+source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -85,14 +86,12 @@ ZSH_THEME="agnoster" # (this is one of the fancy ones)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -116,15 +115,28 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias zshr="source ~/.zshrc"
-alias zshe="vi ~/.zshrc"
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias oz="open -a "\""zed"\"""
-alias trasha="rm -rf ~/.Trash/*"
-alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*"
+# Aliases
+alias zshr="source ~/.zshrc" # Reload zsh
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME" # TODO expand on this and add more git command aliases
+alias oz="open -a "\""zed"\""" # Lazy man edit with Zed
+alias trasha="rm -rf ~/.Trash/*" # Empty trash bin
+alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*" # Empty trash bin sudo level
+# Open with Zed (like a noob)
+alias ozzsh="oz ~/.zshrc"
+alias ozskhd="oz ~/.skhdrc"
+alias ozyab="oz ~/.yabairc"
+alias ozskbar="oz ~/.config/sketchybar/sketchybarrc"
+# Open with Vi (Like a PROgrammer)
+alias vizsh="vi ~/.zshrc"
+alias viskdh="vi ~/.skhdrc"
+
+# Aliases for the lolz
+alias whoisgod="whoami"
+
+export FZF_DEFAULT_OPTS='--height=40% --preview="cat {}" --preview-window=right:60%:wrap'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_OPTS=‘—height=40% —preview=“cat {}” —preview-window=right:60%:wrap’
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config

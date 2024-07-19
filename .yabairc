@@ -32,11 +32,11 @@ yabai -m config                                    \
     split_ratio                  0.50              \
     split_type                   auto              \
     auto_balance                 off               \
-    top_padding                  06                \
-    bottom_padding               06                \
-    left_padding                 06                \
-    right_padding                06                \
-    window_gap                   05                \
+    top_padding                  09                \
+    bottom_padding               09                \
+    left_padding                 10                \
+    right_padding                10                \
+    window_gap                   09                \
     layout                       bsp               \
     mouse_modifier               ctrl              \
     mouse_action1                move              \
@@ -56,13 +56,14 @@ yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Selec
 # Specific Spaces #TODO Refine this pls
 yabai -m rule --add app="^Safari$" space=^1
 yabai -m rule --add app="^Xcode$" space=^1
+yabai -m rule --add app="^Davinci Resolve$" space=^2
 yabai -m rule --add app="^Adobe Lightroom$" space=^2
 yabai -m rule --add app="^Adobe Photoshop$" space=^2
 yabai -m rule --add app="^Adobe After Effects$" space=^2
-yabai -m rule --add app="^Finder$" space=^3
-yabai -m rule --add app="^iTerm2$" space=^4
+yabai -m rule --add app="^iTerm2$" space=^3
+yabai -m rule --add app="^Finder$" space=^4
 
-yabai -m config layout bsp
+# yabai -m config layout bsp
 
 # Set up spaces after applying all configuration
 # source "$HOME/.config/yabai/_spaces.sh"

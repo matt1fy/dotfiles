@@ -10,18 +10,18 @@ item_dir="$HOME/.config/sketchybar/items"
 plugin_dir="$HOME/.config/sketchybar/plugins"
 # config_dir="~/.config/sketchybar/configs"
 
-# Color picker: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker  OR  http://peteroupc.github.io/colorpicker/demo.html
+# COLOR PICKERS: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker  OR  http://peteroupc.github.io/colorpicker/demo.html
 
 # Menu Bar
 sketchybar --bar position=top           \
            height=30                    \
            y_offset=3                   \
-           border_width=3               \
+           border_width=4               \
            blur_radius=100              \
            color=$BAR_COLOR             \
-           border_color=$PASTELPURPLE   \
+           border_color=$ORANGELITE     \
            margin=6                     \
-           corner_radius=11             \
+           corner_radius=9              \
            padding_left=12              \
            padding_right=12             \
            shadow=on
@@ -110,7 +110,10 @@ source "$item_dir/itemBattery.sh"
 # 2nd Right Disk Monitor
 source "$item_dir/itemDiskmonitor.sh"
 
-# 3rd Right Volume
+# 3rd Right Aliases
+source "$item_dir/itemAlias.sh"
+
+# 4th Right Volume
 source "$item_dir/itemVolume.sh"
 
 # source "$item_dir/itemNetwork.sh"
