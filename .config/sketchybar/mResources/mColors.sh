@@ -8,6 +8,7 @@ export WHITE=0xffffffff # ffffff
 export OFFWHITE=0xffebdbb2 # ebdbb2
 export GREY=0xff928374 # 928374
 export SKY=0xff83a598 # 83a598
+export GRAYTRANS=0x732a2735 # 2a2735
 
 export PASTELPURPLE=0xb3715eac # 715eac
 export PURPLE=0xffc46aff # c46aff
@@ -40,11 +41,11 @@ export OPEN_APPS_BACKGROUND=$ITEM_COLOR
 export CALENDAR_BACKGROUND=0xffb8c0e0 # b8c0e0
 
 # General bar colors
-export BAR_COLOR=0x732a2735 # 2a2735
+export ACCENTCOLOR=$ORANGELITE
+export BAR_COLOR=$GRAYTRANS
 export ICON_COLOR=$WHITE # Color of all icons
 export LABEL_COLOR=$WHITE # Color of all labels
 export ALT_LABEL_COLOR=$SOFTPURPLE # Alternative label color
-
 export POPUP_BG_COLOR=$BLACK
 export POPUP_BD_COLOR=$WHITE
 

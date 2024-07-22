@@ -10,34 +10,41 @@ plugin_dir="$HOME/.config/sketchybar/plugins"
 
 # COLOR PICKERS: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker  OR  http://peteroupc.github.io/colorpicker/demo.html
 
-# Menu Bar
-sketchybar --bar position=top           \
-           height=30                    \
-           y_offset=3                   \
-           border_width=4               \
-           blur_radius=100              \
-           color=$BAR_COLOR             \
-           border_color=$ORANGELITE     \
-           margin=6                     \
-           corner_radius=9              \
-           padding_left=12              \
-           padding_right=12             \
-           shadow=on
+# Menu bar config
+bar_config=(
+  position=top
+  height=30
+  y_offset=3
+  border_width=4
+  blur_radius=50
+  color=$BAR_COLOR
+  border_color=$ACCENTCOLOR
+  margin=6
+  corner_radius=9
+  padding_left=12
+  padding_right=12
+  shadow=on
+)
 
-# Default Item Properties
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Avenir Next:Heavy:16.0"
-  label.font="SF Pro:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+# render that shit
+sketchybar --bar "${bar_config[@]}"
+
+icon_defaults=(
+  icon.font="$ICON_FONT"
+  icon.color="$ICON_COLOR"
   icon.padding_left=3
   icon.padding_right=3
+)
+
+label_defaults=(
+  label.font="$LABEL_FONT"
+  label.color="$LABEL_COLOR"
   label.padding_left=2
   label.padding_right=2
 )
-sketchybar --default "${default[@]}"
+
+# render this shit
+sketchybar --default "${icon_config[@]}"
 
 # 1st Left Date and Clock
 source "$item_dir/itemClock.sh"
@@ -107,12 +114,12 @@ source "$item_dir/itemBattery.sh"
 source "$item_dir/itemDiskmonitor.sh"
 
 # 3rd Right Aliases
-# source "$item_dir/itemAlias.sh"
+source "$item_dir/itemAlias.sh"
 
 # 4th Right Volume
 source "$item_dir/itemVolume.sh"
 
-# source "$item_dir/itemNetwork.sh"
-# source "$item_dir/spotify.sh"
+#Spotify
+source "$item_dir/spotify.sh"
 
 sketchybar --update
