@@ -7,7 +7,7 @@ POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
 
 apple_logo=(
 	icon="$APPLE"
-	icon.font="SF Pro:Black:16.0"
+	icon.font="SF Pro:Black:18.0"
 	icon.color="$WHITE"
 	y_offset=1
 	background.padding_left=-3
@@ -22,8 +22,8 @@ apple_logo=(
 	popup.background.border_width=3
 	popup.background.corner_radius=7
 	popup.background.blur_radius=100
-	popup.background.color=$BLACK
-	popup.background.border_color=$ORANGELITE
+	popup.background.color="$BLACK"
+	popup.background.border_color="$ACCENTCOLOR"
 )
 
 apple_prefs=(

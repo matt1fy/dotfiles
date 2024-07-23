@@ -2,117 +2,90 @@
 
 # Created by Matt1fy
 
-source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
-source "$HOME/.config/sketchybar/mResources/mIcons.sh" # Load my defined icons
+# Loading my colors icons and defaults
+source "$HOME/.config/sketchybar/mResources/mColors.sh"
+source "$HOME/.config/sketchybar/mResources/mIcons.sh"
+source "$HOME/.config/sketchybar/mResources/mDefaults.sh"
 
 item_dir="$HOME/.config/sketchybar/items"
 plugin_dir="$HOME/.config/sketchybar/plugins"
 
 # COLOR PICKERS: https://felixkratz.github.io/SketchyBar/config/tricks#color-picker  OR  http://peteroupc.github.io/colorpicker/demo.html
 
-# Menu Bar
-sketchybar --bar position=top           \
-           height=30                    \
-           y_offset=3                   \
-           border_width=4               \
-           blur_radius=100              \
-           color=$BAR_COLOR             \
-           border_color=$ORANGELITE     \
-           margin=6                     \
-           corner_radius=9              \
-           padding_left=12              \
-           padding_right=12             \
-           shadow=on
+# Menu bar config
+bar_config=(
+  position=top
+  height=30
+  y_offset=3
+  border_width=4
+  blur_radius=50
+  color=$BAR_COLOR
+  border_color=$ACCENTCOLOR
+  margin=6
+  corner_radius=9
+  padding_left=12
+  padding_right=12
+  shadow=on
+)
 
-# Default Item Properties
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Avenir Next:Heavy:16.0"
-  label.font="SF Pro:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+icon_defaults=(
+  icon.font="$ICON_FONT"
+  icon.color="$ICON_COLOR"
   icon.padding_left=3
   icon.padding_right=3
+)
+
+label_defaults=(
+  label.font="$LABEL_FONT"
+  label.color="$LABEL_COLOR"
   label.padding_left=2
   label.padding_right=2
 )
-sketchybar --default "${default[@]}"
 
-# 1st Left Date and Clock
+background_defaults=(
+  background.corner_radius=9
+  background.height=30
+  background.padding_left=5
+  background.padding_right=5
+)
+
+popup_defaults=(
+  popup.height=30
+  popup.horizontal=false
+  popup.background.border_color="$BLACK"
+  popup.background.border_width=3
+  popup.background.color="$BLACK"
+  popup.background.corner_radius=7
+  popup.background.shadow.drawing=on
+)
+
+# Render that shit
+sketchybar --bar "${bar_config[@]}" \
+  --default                         \
+  updates=when_shown                \
+  "${icon_defaults[@]}"             \
+  "${label_defaults[@]}"            \
+  "${background_defaults[@]}"       \
+  "${popup_defaults[@]}"
+
+# Left items
 source "$item_dir/itemClock.sh"
-
-# 2nd Left Brain Rot
-sketchybar --add item     brainrot left \
-           --set brainrot icon=􁽀 \
-                          icon.font="SF Pro:Bold:15.0" \
-                          y_offset=1 \
-                          icon.padding_left=4 \
-                          icon.color=0xffffffff
-
-# 3rd Left Stacks
 source "$item_dir/itemStack.sh"
 
-# 1st Center Mission Control Spaces
-spaces=("main" "edit" "claud" "files" "code" "media")
-space_icons=("􀀜" "􀨺" "􀌍" "􀈗" "􀩼" "􀊕" "7" "8" "9" "10")
-space_colors=("$PURPLE" "$RED" "$SKY" "$ACCENTGOLDII" "$TEAL" "$SPOTIFYGREEN")
-for i in "${!space_icons[@]}"
-do
-  sid="$(($i+1))"
-  space=(
-    space="$sid"
-    icon="${space_icons[i]}"
-    icon.font="SF Pro:Bold:17.0"
-    y_offset=1
-    icon.padding_left=3
-    icon.padding_right=3
-    icon.highlight_color="${space_colors[i]}"
-    icon.padding_left=1
-    icon.padding_right=3
-    icon.background.color="${space_colors[i]}"
-    icon.background.height=2.5
-    icon.background.y_offset=-5
-    background.padding_left=3
-    background.padding_right=3
-    label.drawing=off
-    script="$plugin_dir/space.sh"
-    click_script="yabai -m space --focus $sid"
-  )
-  sketchybar --add space space."$sid" center --set space."$sid" "${space[@]}"
-done
-
-# Bracket Spaces
-# sketchybar --add bracket spaces space."$sid"
-#           --set         spaces background.color=0xffffffff \
-#                                background.corner_radius=4  \
-#                                background.height=20
-
-# Center Divider (Testing this shit out)
-sketchybar  --add item center.div center \
-            --set center.div icon=􀥤 \
-                             icon.font="Avenir Next:Heavy:18" \
-                             y_offset=1
-
-# 2nd Center Apple
+# Center items
+source "$item_dir/itemSpaces.sh"
+source "$item_dir/itemCenterdiv.sh"
 source "$item_dir/itemApple.sh"
-
-# 3rd Center Focused App
 source "$item_dir/itemFrontapp.sh"
 
-# 1st Right Battery
+# Right items
 source "$item_dir/itemBattery.sh"
-
-# 2nd Right Disk Monitor
 source "$item_dir/itemDiskmonitor.sh"
-
-# 3rd Right Aliases
 # source "$item_dir/itemAlias.sh"
-
-# 4th Right Volume
 source "$item_dir/itemVolume.sh"
+source "$item_dir/itemSpotify.sh"
 
-# source "$item_dir/itemNetwork.sh"
-# source "$item_dir/spotify.sh"
-
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
+
+echo "sketchybar configuration loaded.."

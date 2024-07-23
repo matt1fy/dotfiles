@@ -26,7 +26,7 @@ hyper - 0x12 : yabai -m window --focus stack.prev || yabai -m window --focus sta
 
 # Yabai SKHD Sketchybar refresh
 hyper - o : sketchybar --reload
-hyper - i : yabai --restart-service
+hyper - i : yabai --restart-service && sketchybar --reload
 hyper - u : skhd --restart-service
 
 # Open Apps
