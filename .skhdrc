@@ -37,3 +37,8 @@ hyper - b : open -n -a "Safari"
 hyper - s : open -n -a "Spotify"
 
 # Davinci specific keys
+
+# Throwing spaces into displays
+hyper - 0x18 : yabai -m space 1 --display 1 && yabai -m space 2 --display 1
+hyper - 0x19 : yabai -m space 3 --display 2 && yabai -m space 4 --display 2
+hyper - 0x20 : yabai -m space 5 --display 3 && yabai -m space 6 --display 3
