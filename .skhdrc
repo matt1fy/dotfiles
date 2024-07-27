@@ -16,18 +16,20 @@ ctrl + shift - down : yabai -m window --resize top:0:50 || yabai -m window --res
 # Float Window
 hyper - 0x14 : yabai -m window --toggle float --grid 5:5:1:1:3:3
 
-# Moving windows between spaces: shift + lalt - {1, 2, 3, 4, p, n } (Assumes 4 Spaces Max per Display)
-shift + lalt - 0x15 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[4] ]] \
-                  && yabai -m window --space $SPACES[4]
+# Moving windows between spaces: shift + lalt - {1, 2, 3, 4, p, n } (Assumes 3 Spaces Max per Display)
+shift + lalt - 0x15 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[3] ]] \
+                  && yabai -m window --space $SPACES[3]
 
 # Scroll Through Stack
 hyper - 0x13 : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 hyper - 0x12 : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 # Yabai SKHD Sketchybar refresh
-hyper - o : sketchybar --reload
-hyper - i : yabai --restart-service && sketchybar --reload
-hyper - u : skhd --restart-service
+hyper + fn - f1 : sketchybar --reload
+hyper + fn - f2 : yabai --restart-service && sketchybar --reload
+hyper + fn - f3 : skhd --restart-service
+
+# F1 is 0x7A, F2 is 0x78, F3 is 0x63, F4 is 0x76
 
 # Open Apps
 hyper - e : open ~/
@@ -35,6 +37,7 @@ hyper - t : open -n -a "iTerm"
 hyper - d : open -n -a "DaVinci Resolve"
 hyper - b : open -n -a "Safari"
 hyper - s : open -n -a "Spotify"
+hyper - o : open -n -a "Obsidian"
 
 # Davinci specific keys
 
