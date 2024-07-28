@@ -29,8 +29,6 @@ hyper + fn - f1 : sketchybar --reload
 hyper + fn - f2 : yabai --restart-service && sketchybar --reload
 hyper + fn - f3 : skhd --restart-service
 
-# F1 is 0x7A, F2 is 0x78, F3 is 0x63, F4 is 0x76
-
 # Open Apps
 hyper - e : open ~/
 hyper - t : open -n -a "iTerm"
@@ -38,8 +36,10 @@ hyper - d : open -n -a "DaVinci Resolve"
 hyper - b : open -n -a "Safari"
 hyper - s : open -n -a "Spotify"
 hyper - o : open -n -a "Obsidian"
+hyper - w : open -n -a "Telegram"
 
 # Davinci specific keys
+#
 
 # Throwing spaces into displays
 hyper - 0x18 : yabai -m space 1 --display 1 && yabai -m space 2 --display 1
