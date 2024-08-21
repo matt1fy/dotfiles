@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/sketchybar/mResources/mColors.sh"
+
+memory=(
+	background.padding_left=0
+#	label.font="SF Pro:Black:12"
+#	icon.font="SF Pro:Black:16.0"
+	label.color="$WHITE"
+	icon="$MEMORY"
+	icon.color="$ORANGELITE"
+	update_freq=15
+	script="$plugin_dir/statsRam.sh"
+)
+
+sketchybar --add item memory right \
+	--set memory "${memory[@]}"

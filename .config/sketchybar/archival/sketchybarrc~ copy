@@ -17,14 +17,14 @@ bar_config=(
   position=top
   height=30
   y_offset=3
-  border_width=5.5
+  border_width=4
   blur_radius=50
-  color=$BAR_COLOR1
-  border_color=$ACCENT_COLOR1
-  margin=2
+  color=$TRANSPARENT
+  border_color=$ACCENTCOLOR
+  margin=6
   corner_radius=9
-  padding_left=10
-  padding_right=10
+  padding_left=12
+  padding_right=12
   shadow=on
 )
 
@@ -78,24 +78,9 @@ source "$item_dir/itemCenterdiv.sh"
 source "$item_dir/itemApple.sh"
 source "$item_dir/itemFrontapp.sh"
 
-# Test tomfoolery
-swifty=(
-	icon="$SWIFT"
-	icon.font="SF Pro:Black:14.0"
-	icon.color="$OFFWHITE"
-	label.drawing=off
-	y_offset=1.7
-	background.padding_left=1.5
-	background.padding_right=1.5
-)
-
-sketchybar --add item swifty center	\
-	   --set swifty "${swifty[@]}"
-
 # Right items
 source "$item_dir/itemBattery.sh"
-source "$item_dir/itemNet.sh"
-source "$item_dir/itemStats.sh"
+source "$item_dir/itemNetwork.sh"
 source "$item_dir/itemDiskmonitor.sh"
 # source "$item_dir/itemAlias.sh"
 source "$item_dir/itemVolume.sh"

@@ -8,8 +8,9 @@ fi
 # Path to my Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-source $HOME/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
 source $ZSH/oh-my-zsh.sh
+
+source $HOME/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
@@ -23,8 +24,6 @@ source $ZSH/oh-my-zsh.sh
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster" # (this is one of the fancy ones)
 # see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster
-
-eval $(thefuck --alias)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -88,52 +87,69 @@ eval $(thefuck --alias)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+eval $(thefuck --alias)
+
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 
 # Aliases
+#
+alias allah="ls -a" # Because ALLAH IS ALL SEEING ALL KNOWING - Umi prolly idk
+alias konek="ln -s" # Somebody kill me
 alias zshr="source ~/.zshrc" # Reload zsh
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME" # TODO expand on this and add more git command aliases
-alias oz="open -a "\""zed"\""" # Lazy man edit with Zed
-alias trasha="rm -rf ~/.Trash/*" # Empty trash bin
-alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*" # Empty trash bin sudo level
+alias skhdr="skhd --restart-service"
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias trasha="rm -rf ~/.Trash/*" # Not spiting my ex but her name fits LOL
+alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*" # Global volumes
+
+# Show me
+alias showlaunchagents="ls -a ~/Library/LaunchAgents"
+alias showerrlogs="ls -a /private/tmp"
+
 # Open with Zed (like a noob)
+alias oz="open -a "\""zed"\""" # Lazy man edit with Zed
 alias ozzsh="oz ~/.zshrc"
 alias ozskhd="oz ~/.skhdrc"
 alias ozyab="oz ~/.yabairc"
 alias ozskbar="oz ~/.config/sketchybar/sketchybarrc"
+
 # Open with Vi (Like a PROgrammer)
+alias vihh="vi ~/"
 alias vizsh="vi ~/.zshrc"
-alias viskdh="vi ~/.skhdrc"
+alias viskhd="vi ~/.skhdrc"
+alias viyab="vi ~/.yabairc"
+alias viskbar="vi ~/.config/sketchybar"
+alias viqmk="vi ~/qmk_firmware/keyboards/keychron/k4_pro/ansi"
+alias viobs="vi ~/Documents/"\""Obsidian Vault"\""/"\""matts 2nd brain"\"""
+alias videf="vi ~/.config/sketchybar/mResources"
+alias vivi="vi ~/.vimrc"
 
 # Aliases for the lolz
 alias whoisgod="whoami"
 
-export FZF_DEFAULT_OPTS='--height=40% --preview="cat {}" --preview-window=right:60%:wrap'
+export FZF_DEFAULT_OPTS='--height=60% --preview="cat {}" --preview-window=right:45%:wrap'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config
+
+eval "$(starship init zsh)"

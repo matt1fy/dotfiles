@@ -12,30 +12,30 @@ source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
 # yabai -m space --display <DISPLAY_SEL>
 
 # Global settings
-yabai -m config                                    \
+yabai -m config                                    \
     external_bar                 all:32:0          \
     menubar_opacity              1.0               \
     mouse_follows_focus          on                \
-    focus_follows_mouse          off               \
+    focus_follows_mouse          autofocus         \
     display_arrangement_order    horizontal        \
     window_origin_display        cursor            \
     window_placement             second_child      \
     window_zoom_persist          on                \
     window_shadow                float             \
-    window_animation_duration    0.2               \
+    window_animation_duration    0.14              \
     window_animation_easing      ease_in_out_expo  \
-    window_opacity_duration      0.2               \
+    window_opacity_duration      0.1               \
     window_opacity               on                \
     active_window_opacity        1.0               \
-    normal_window_opacity        0.85              \
-    insert_feedback_color        $ORANGELITE       \
-    split_ratio                  0.50              \
+    normal_window_opacity        0.73              \
+    insert_feedback_color        $ORANGELITE	   \
+    split_ratio                  0.53              \
     split_type                   auto              \
     auto_balance                 off               \
     top_padding                  09                \
-    bottom_padding               09                \
-    left_padding                 10                \
-    right_padding                10                \
+    bottom_padding               08                \
+    left_padding                 08                \
+    right_padding                08                \
     window_gap                   09                \
     layout                       bsp               \
     mouse_modifier               ctrl              \
@@ -53,17 +53,34 @@ yabai -m rule --add label="About This Mac" app="System Information" title="About
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 # yabai -m rule --add label="Save As" app="^Zed$" title="Save As" manage=off
 
+yabai -m rule --add app="iTerm" role="AXTextField" subrole="AXStandardWindow" manage=on
+
+# Set finder spaces to horizontal
+# yabai -m config --space 8 split_type=vertical
+
 # yabai -m rule --add app="^(Safari|Zed)$" space=1
-#yabai -m rule --add app="^Davinci Resolve$" space=^2
-# yabai -m rule --add app="^iTerm$" space=4
+# yabai -m rule --add app="^Davinci Resolve$" manage=tile
+# yabai -m rule --add app="^iTerm$" sticky=off
 # yabai -m rule --add app="^Finder$" space=5
 # yabai -m rule --add app="^Spotify$" space=6
 
-# yabai -m config layout bsp
-
 # Set up spaces after applying all configuration
-source "$HOME/.config/yabai/_spaces.sh"
+# source "$HOME/.config/yabai/_spaces.sh"
 
-borders hidpi=on width=8.0 active_color=$ORANGELITE inactive_color=0xff414550
+yabai -m space 1 --label one
+yabai -m space 2 --label two
+yabai -m space 3 --label three
+yabai -m space 4 --label four
+yabai -m space 5 --label five
+yabai -m space 6 --label six
+yabai -m space 7 --label seven
+yabai -m space 8 --label eight
+yabai -m space 9 --label nine
+
+# yabai -m space 3 layout stack
+
+yabai -m rule --apply
+
+Borders hidpi=on width=12.0 active_color=$ACCENT_COLOR1 inactive_color=$INACTIVE background_color=$BAR_COLOR1 blur_radius=100
 
 echo "yabai and borders configuration loaded.."

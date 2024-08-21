@@ -23,8 +23,8 @@ bar_config=(
   border_color=$ACCENT_COLOR1
   margin=2
   corner_radius=9
-  padding_left=10
-  padding_right=10
+  padding_left=8
+  padding_right=8
   shadow=on
 )
 

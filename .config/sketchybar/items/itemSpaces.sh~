@@ -10,7 +10,7 @@ source "$HOME/.config/sketchybar/mResources/mIcons.sh"
 # 􀂮􀂤􀂠􀂠􀂜􀂶≠
 # ("􀀜" "􀨺" "􀍋" "􀩼" "􀩼" "􀈗" "􀈗" "􀌍" "􀊕")
 
-spaces=("main" "cloud" "nle" "code" "files" "media" "code2" "files2" "media2")
+spaces=("main" "cloud" "NLE" "code" "files" "media" "code2" "files2" "media2")
 space_icons=("􀀜" "􀌋" "􀜤" "􀩼" "􀈕" "􀾬" "􀙚" "􀈖" "􀾭")
 space_colors=("$PURPLE" "$SKY" "$RED" "$TURQUOISE" "$ACCENTGOLDII" "$HOTPINK" "$TURQUOISE" "$ACCENTGOLDII" "$SPOTIFYGREEN")
 for i in "${!space_icons[@]}"
