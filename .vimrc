@@ -41,6 +41,13 @@ augroup vimrcEx
 " turn hybrid line numbers on
 :set number relativenumber
 :set nu rnu
+" turn on cursor guides
+:set cursorline
+:set cursorcolumn
+:set linebreak
+":set textwidth=0
+":set wrapmargin=0
+:set wrap!
 
 "colorscheme onedark
 "syntax on
@@ -60,7 +67,7 @@ endif
 " :set cursorcolumn to highlight 
 
 " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=158 "mWas 78
 augroup END
 
 " Add optional packages.
@@ -80,6 +87,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
