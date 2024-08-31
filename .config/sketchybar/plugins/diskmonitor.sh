@@ -1,4 +1,4 @@
-#!/usr/bin/env bas
+#!/usr/bin/env bash
 
 # Created by Matt1fy
 
@@ -20,11 +20,11 @@ case ${PERCENTAGE} in
     ;;
   7[6-9] | 8[0-7])
     ICON="󰪣"
-    COLOR=$ORANGE
+    COLOR=$YELLOW
     ;;
   6[4-9] | 7[0-5])
     ICON="󰪢"
-    COLOR=$YELLOW
+    COLOR=$SPOTIFYGREEN
     ;;
   5[2-9] | 6[0-3])
     ICON="󰪡"
@@ -64,13 +64,14 @@ label_toggle() {
     PADDING="0"
   else
     DRAWING="on"
-    PADDING="28"
+    PADDING="32"
   fi
 
-  sketchybar --set $NAME.value label.drawing=$DRAWING \ 
+  sketchybar --set $NAME.value label.drawing=$DRAWING \
              --set $NAME.label label.drawing=$DRAWING \
              --set $NAME icon.padding_right=$PADDING
 }
+
 
 case "$SENDER" in
 "routine" | "forced")

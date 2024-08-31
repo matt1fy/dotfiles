@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+# Created by Matt1fy
+
+# LOAD SCRIPTING ADDITIONS
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
+
+# yabai -m space --create [<SPACE_SEL>]
+# yabai -m space --display <DISPLAY_SEL>
+
+# Global settings
+yabai -m config                                    \
+    external_bar                 all:32:0          \
+    menubar_opacity              1.0               \
+    mouse_follows_focus          on                \
+    focus_follows_mouse          autoraise         \
+    display_arrangement_order    horizontal        \
+    window_origin_display        cursor            \
+    window_placement             second_child      \
+    window_zoom_persist          on                \
+    window_shadow                float             \
+    window_animation_duration    0.2               \
+    window_animation_easing      ease_in_out_expo  \
+    window_opacity_duration      0.2               \
+    window_opacity               on                \
+    active_window_opacity        1.0               \
+    normal_window_opacity        0.92              \
+    insert_feedback_color        $ACCENTCOLOR      \
+    split_ratio                  0.50              \
+    split_type                   auto              \
+    auto_balance                 off               \
+    top_padding                  09                \
+    bottom_padding               09                \
+    left_padding                 10                \
+    right_padding                10                \
+    window_gap                   09                \
+    layout                       bsp               \
+    mouse_modifier               ctrl              \
+    mouse_action1                move              \
+    mouse_action2                resize            \
+    mouse_drop_action            stack
+
+# RULES
+# Exclude problematic apps from being managed
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|SF Symbols|ColorSlurp|Disk Utility)$" manage=off
+yabai -m rule --add app="^(Creative Cloud|Font Book|Logi Options+)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+# yabai -m rule --add label="Save As" app="^Zed$" title="Save As" manage=off
+
+# yabai -m rule --add app="^(Safari|Zed)$" space=1
+# yabai -m rule --add app="^Davinci Resolve$" space=^2
+# yabai -m rule --add app="^iTerm$" space=4
+# yabai -m rule --add app="^Finder$" space=5
+# yabai -m rule --add app="^Spotify$" space=6
+
+yabai -m config layout bsp
+
+# Set up spaces after applying all configuration
+# source "$HOME/.config/yabai/_spaces.sh"
+
+borders hidpi=on width=6.0 active_color=$ACCENTCOLOR inactive_color=$INACTIVE
+
+echo "yabai and borders configuration loaded.."

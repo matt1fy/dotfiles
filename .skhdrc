@@ -25,6 +25,23 @@ scripts < hyper - q ; lockdown
 lockdown < ctrl - d ; default
 lockdown < ctrl - z ; scripts
 
+# Sys Control
+# Dark mode, Hyper - brackets
+scripts < 0x1E : dark-mode on
+scripts < 0x21 : dark-mode off
+scripts < 0x1B : yabai -m config focus_follows_mouse off
+scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
+# Connect sidecar, F11, F12
+scripts < hyper + fn - f11 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
+scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on"
+# Connect Virtual sidecar
+scripts < hyper - 0x1B : betterdisplaycli toggle --UUID="B53E6D39-4480-475E-AB70-401ECA3926F7" --connected="off"
+scripts < hyper - 0x18 : betterdisplaycli set -namelike=virtual -connected=on
+# Yabai SKHD Sketchybar refresh
+scripts < fn - f1 : sketchybar --reload
+scripts < fn - f2 : yabai --restart-service
+scripts < fn - f4 : skhd --restart-service
+
 # Resize Window
 default < ctrl + shift - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
 default < ctrl + shift - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
@@ -40,7 +57,7 @@ scripts < hyper - 0x19 : yabai -m window --toggle float --grid 5:5:-1:0:2:2
 scripts < hyper - 0x1A : yabai -m window --toggle float --grid 5:5:0:0:3:5
 scripts < hyper - 0x1C : yabai -m window --toggle float --grid 5:5:3:0:2:5
 
-# Swap window positions, Hyper - 1
+# Swap window positions, Hyper - 1 TODO make them work for vertical splits too pls
 default < hyper + fn - f1 : yabai -m window --warp west && yabai -m window --focus east || yabai -m window --warp east --focus && yabai -m window --focus west || yabai -m window --warp north && yabai -m window --focus south || yabai -m window --warp south --focus && yabai -m window --focus north
 default < hyper - 0x41 : yabai -m window --warp west && yabai -m window --focus east || yabai -m window --warp east --focus && yabai -m window --focus west || yabai -m window --warp north && yabai -m window --focus south || yabai -m window --warp south --focus && yabai -m window --focus north
 # Scroll through stacks, Hyper - 2
@@ -52,32 +69,16 @@ default < lcmd + lshift + lctrl - 0x52 : yabai -m window east --stack $(yabai -m
 
 # Open Apps
 scripts < hyper - e : open ~/
-scripts < hyper - t : open -n -a "iTerm"
-scripts < hyper - d : open -n -a "DaVinci Resolve"
-scripts < hyper - b : open -n -a "Safari"
-scripts < hyper - s : open -n -a "Spotify"
-scripts < hyper - o : open -n -a "Obsidian"
-scripts < hyper - w : open -n -a "Telegram"
-scripts < hyper - y : open -n -a "kitty"
-scripts < hyper - v : open "BetterDisplay"
+scripts < hyper - c : open -a "iTerm"
+scripts < hyper - d : open -a "DaVinci Resolve"
+scripts < hyper - b : open -a "Safari"
+scripts < hyper - s : open -a "Spotify"
+scripts < hyper - o : open -a "Obsidian"
+scripts < hyper - t : open -a "Telegram"
+scripts < hyper - y : open -a "kitty"
+scripts < hyper - v : open -a "BetterDisplay"
 
-# Sys Control
-# Dark mode, Hyper - brackets
-scripts < 0x1E : dark-mode on
-scripts < 0x21 : dark-mode off
-scripts < 0x1B : yabai -m config focus_follows_mouse off
-scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
-# Yabai SKHD Sketchybar refresh
-scripts < fn - f1 : sketchybar --reload
-scripts < fn - f2 : yabai --restart-service
-scripts < fn - f3 : yabai --restart-service && sketchybar --reload
-scripts < fn - f4 : skhd --restart-service
-
-# Connect sidecar, F11, F12
-# hyper + fn - f11 : ./BetterDisplay toggle sidecarConnected -name="61A4302B-EEA2-4533-9F07-EB2478EC3151" on
-# hyper + fn - f12 : ./BetterDisplay toggle sidecarConnected -name="61A4302B-EEA2-4533-9F07-EB2478EC3151" off
-
-# Focus Spaces
+# Right hand focus spaces
 default < hyper - 0x52 : yabai -m space --focus next || yabai -m space --focus first
 default < hyper - 0x53 : yabai -m space --focus one
 default < hyper - 0x54 : yabai -m space --focus two
@@ -89,13 +90,14 @@ default < hyper - 0x59 : yabai -m space --focus seven
 default < hyper - 0x5B : yabai -m space --focus eight
 default < hyper - 0x5C : yabai -m space --focus nine
 
-default < hyper - 0x0A : yabai -m space --focus next || yabai -m space --focus first
+# Left hand focus spaces
+default < hyper - 0x32 : yabai -m space --focus next || yabai -m space --focus first
 default < hyper - 0x12 : yabai -m space --focus one
 default < hyper - 0x13 : yabai -m space --focus two
 default < hyper - 0x14 : yabai -m space --focus three
 default < hyper - 0x15 : yabai -m space --focus four
 
-# Windows to spaces, LGCS - Keypad
+# Throw windows to spaces, Shft+Cmd+Ctrl - Keypad
 default < lcmd + lshift + lctrl - 0x54 : yabai -m window --space two --focus;\
 		sketchybar --trigger windows_on_spaces
 default < lcmd + lshift + lctrl - 0x57 : yabai -m window --space five --focus;\
@@ -115,4 +117,24 @@ default < lcmd + lshift + lctrl - 0x55 : yabai -m window --space three --focus;\
 default < lcmd + lshift + lctrl - 0x58 : yabai -m window --space six --focus;\
 		sketchybar --trigger windows_on_spaces
 default < lcmd + lshift + lctrl - 0x5C : yabai -m window --space nine --focus;\
+		sketchybar --trigger windows_on_spaces
+
+# Throw windows to spaces LEFT, MEH - Nums
+default < lctrl + lalt - 0x12 : yabai -m window --space one --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x13 : yabai -m window --space two --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x14 : yabai -m window --space three --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x15 : yabai -m window --space four --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x17 : yabai -m window --space five --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x16 : yabai -m window --space six --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x1A : yabai -m window --space seven --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x1C : yabai -m window --space eight --focus;\
+		sketchybar --trigger windows_on_spaces
+default < lctrl + lalt - 0x19 : yabai -m window --space nine --focus;\
 		sketchybar --trigger windows_on_spaces

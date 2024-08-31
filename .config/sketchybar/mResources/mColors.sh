@@ -55,7 +55,7 @@ export CALENDAR_BACKGROUND=0xffb8c0e0 #b8c0e0
 
 # General bar colors
 export BAR_COLOR1=$GRAYTRANS #732a2735
-export BAR_COLOR2= $VAMPBLACK #d9140e14
+export BAR_COLOR2=$VAMPBLACK #d9140e14
 export ICON_COLOR=$WHITE #ffffff
 export LABEL_COLOR=$WHITE #ffffff
 export ALT_LABEL_COLOR=$SOFTPURPLE # Alternative label color

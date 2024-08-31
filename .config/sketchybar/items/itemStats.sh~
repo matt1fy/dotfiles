@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/mResources/mColors.sh"
+plugin_dir="$HOME/.config/sketchybar/plugins/"
 
-memory=(
-	background.padding_left=0
-#	label.font="SF Pro:Black:12"
-#	icon.font="SF Pro:Black:16.0"
-	label.color="$WHITE"
-	icon="$MEMORY"
-	icon.color="$ORANGELITE"
-	update_freq=15
-	script="$plugin_dir/statsRam.sh"
-)
-
-sketchybar --add item memory right \
-	--set memory "${memory[@]}"
+sketchybar 	--add event 		hide_stats			\
+		--add event 		show_stats			\
+           	--add event 		toggle_stats			\
+                  							\
+           	--add item	animator right         			\
+           	--set animator 	drawing=off            			\
+                    		updates=on             			\
+                              	script="$plugin_dir/toggle_stats.sh"	\
+           	--subscribe        	animator hide_stats show_stats toggle_stats

@@ -2,10 +2,8 @@
 
 # Created by Matt1fy
 
-source="$HOME/.config/sketchybar/mResources/mColors.sh"
-
 diskmonitor=(
-#  icon.font="CaskaydiaCove Nerd Font Mono:Regular:24"
+  icon.font="Zed Mono:Regular:20"
   icon.padding_right=20
   label.drawing=off
   y_offset=1
@@ -32,7 +30,6 @@ diskmonitor_label=(
 diskmonitor_value=(
   "${misc[@]}"
   label.font="SF Pro:Bold:10"
-  label.drawing=on
   y_offset=-3
 )
 

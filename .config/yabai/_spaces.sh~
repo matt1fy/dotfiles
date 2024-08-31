@@ -29,8 +29,8 @@ for _ in $(yabai -m query --spaces | jq '.[].index | select(. > 9 '); do
 done
 
 # Create Spaces in Displays
-# yabai -m space --create 1
-# yabai -m space --create 1
+yabai -m space --create 1
+yabai -m space --create 1
 
 finder_padding=(
   top_padding 30

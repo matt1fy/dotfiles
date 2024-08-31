@@ -55,8 +55,6 @@ sketchybar --set $NAME icon=$ICON icon.color=$COLOR
 sketchybar --set $NAME.value label="$PERCENTAGE%"
 }
 
-# I'm gonna disable this click script bullshit yes so unnecessary
-
 label_toggle() {
 
   DRAWING_STATE=$(sketchybar --query $NAME.value | jq -r '.label.drawing')
@@ -69,10 +67,11 @@ label_toggle() {
     PADDING="28"
   fi
 
-  sketchybar --set $NAME.value label.drawing=$DRAWING \ # Was $DRAWING
-             --set $NAME.label label.drawing=$DRAWING \ # Same here
+  sketchybar --set $NAME.value label.drawing=$DRAWING \
+             --set $NAME.label label.drawing=$DRAWING \
              --set $NAME icon.padding_right=$PADDING
 }
+
 
 case "$SENDER" in
 "routine" | "forced")

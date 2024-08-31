@@ -30,7 +30,7 @@ let g:NERDTreeFileLines = 1
 :set linebreak
 ":set textwidth=0
 ":set wrapmargin=0
-:set wrap!
+":set wrap!
 :set incsearch
 
 " The matchit plugin makes the % command work better, but it is not backwards
