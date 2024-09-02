@@ -16,22 +16,108 @@ Plug 'ap/vim-css-color'
 
 call plug#end()
 
+" set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
+
+syntax on
+set t_Co=256
+set term=screen-256color " required for tmux
+":set termguicolors
+
+set title
+set nocompatible
+set ttyfast
+set laststatus=2
+set scrolloff=5 " Lines of text around cursor
+set number
+set shell=zsh
+set mouse=a
+set nolazyredraw " Don't redraw while executing macros
+set showmatch " Show matching braces
+set noshowmode " Don't show which mode disabled for PowerLine
+set autoread " Detect when a file is changed
+set cmdheight=1
+set tm=500 " Timeout length of key combination presses
+set mat=2 " How many tenths of a second to blink
+
+set ignorecase " Enable ignore case
+set smartcase " When using caps, ignore ic
+
+" Indent and tab control
+set autoindent
+set smartindent
+set expandtab
+set smarttab " Tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set tabstop=4 " The Visible width of tabs
+set softtabstop=4 " Edit as if the tabs are 4 characters wide
+set shiftwidth=4 " Number of spaces to use for indent and unindent
+set shiftround " Round indent to a multiple of 'shiftwidth'
+
+" Better command-line completion
+set wildmode=longest,list
+set wildmenu
+
+" Yanking will paste directly to the clipboard
+set clipboard^=unnamed,unnamedplus
+" set paste toggle
+set pastetoggle=<leader>v
+
+" Folding
+set foldmethod=syntax
+set foldcolumn=1
+set foldlevelstart=20
+let g:vim_markdown_folding_disabled=1 " Markdown
+let javaScript_fold=1                 " JavaScript
+let perl_fold=1                       " Perl
+let php_folding=1                     " PHP
+let r_syntax_folding=1                " R
+let ruby_fold=1                       " Ruby
+let sh_fold_enabled=1                 " sh
+let vimsyn_folding='af'               " Vim script
+let xml_syntax_folding=1              " XML
+
+autocmd BufRead,BufNewFile *.cql set filetype=cql
+
+" Except Markdown
+autocmd FileType mkd set sw=4
+autocmd FileType mkd set sts=4
+
+" To list special characters
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,nbsp:+
+set listchars+=trail:-
+set showbreak=↪
+
+" Airline stuff
 let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1 " AirlineRefresh to clear
+":let g:airline_statusline_ontop=1
+"let g:airline_theme='papercolor'
+let g:airline_theme='violet'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:table_mode_corner_corner="+"
+let g:table_mode_header_fillchar="="
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+    endif
+
+" NERD lol
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-" let g:airline_theme='atomic'
 let g:NERDTreeFileLines = 1
 
 " turn hybrid line numbers on
-:set number relativenumber
-:set nu rnu
-:set cursorline
-:set cursorcolumn
-:set linebreak
-":set textwidth=0
-":set wrapmargin=0
-":set wrap!
-:set incsearch
+set number relativenumber
+set nu rnu
+set cursorline
+set cursorcolumn
+"hi CursorLine term=bold cterm=bold
+"hi CursorColumn term=bold cterm=bold
+set linebreak
+"set wrap!
+set incsearch
 
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
@@ -44,13 +130,30 @@ endif
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
-" tbh i dont really wanna do mappings, just raw dog so i can use vim anywhere
-" even on other peoples systems. Unless it's a common remap.
+" Leader keys
+let mapleader = "<space>"
+nmap <space>w :w!<cr>
+nmap <space>x :x!<cr>
+nmap <space>q :q<cr>
+nmap <space>qq :qa<cr>
+nnoremap <space>/ :source ~/.vimrc<cr>
+nnoremap <space>\ :nohlsearch<cr>
+nnoremap <space><c-f> :FZF -e<cr>
+
+nnoremap <space>bi <s-b><s-i>
+nnoremap <space><space> :
+nnoremap <space><space><tab> :!
+nnoremap o o<esc>
+nnoremap O O<esc>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap Y y$
+nnoremap <space>c vwhy
+nnoremap <space>v vwhp
 
 inoremap jj <esc>
-nnoremap <space> :
-" Set backslash as leader key
-let mapleader = "\""
+inoremap <space><cr> <esc>
+
 
 " }}}
 
@@ -97,7 +200,6 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\e[3 q"                     	" blink underline
 endif
 
-set rtp+=/usr/local/opt/fzf
 
 " }}}
 

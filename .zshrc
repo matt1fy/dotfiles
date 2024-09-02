@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to my Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
@@ -92,8 +89,6 @@ eval $(thefuck --alias)
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -152,4 +147,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config
 
+# Path to my Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 eval "$(starship init zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

@@ -8,9 +8,6 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
 
-# yabai -m space --create [<SPACE_SEL>]
-# yabai -m space --display <DISPLAY_SEL>
-
 # Global settings
 yabai -m config                                    \
     external_bar                 all:32:0          \
@@ -85,7 +82,7 @@ yabai -m space 9 --label nine
 
 yabai -m rule --apply
 
-Borders hidpi=on width=12.0 blur_radius=100 
-# active_color=$ACCENT_COLOR1 inactive_color=$INACTIVE background_color=$BAR_COLOR1
+Borders hidpi=on width=12.0 blur_radius=100 inactive_color=$INACTIVE
+# active_color=$ACCENT_COLOR1 background_color=$BAR_COLOR1
 
 echo "yabai and borders configuration loaded.."
