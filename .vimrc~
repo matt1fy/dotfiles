@@ -114,7 +114,7 @@ let g:NERDTreeShowBookmarks = 1
 set number relativenumber
 set nu rnu
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 hi CursorLine term=bold cterm=standout cterm=bold
 "hi CursorColumn term=bold cterm=bold
 set linebreak

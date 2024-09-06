@@ -32,12 +32,12 @@ scripts < 0x21 : dark-mode off
 scripts < 0x1B : yabai -m config focus_follows_mouse off
 scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
 # Connect sidecar, F11, F12
-scripts < hyper + fn - f13 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
+scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
 # Same but on M1 Air
 #scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="on" || betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="off"
 # Connect Virtual sidecar Was 0x1B an 0x18
-scripts < hyper + fn - f12 : betterdisplaycli set -namelike=virtual -connected=on
-scripts < hyper + fn - f11 : betterdisplaycli set -namelike=virtual -connected=off
+scripts < hyper + fn - f11 : betterdisplaycli set -namelike=virtual -connected=on
+scripts < hyper + fn - f13 : betterdisplaycli set -namelike=virtual -connected=off
 # Yabai SKHD Sketchybar refresh
 scripts < fn - f1 : sketchybar --reload && borders active_color="0xffca1b04"
 scripts < fn - f2 : yabai --restart-service
