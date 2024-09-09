@@ -28,7 +28,7 @@ set title
 set nocompatible
 set ttyfast
 set laststatus=2
-set scrolloff=5 " Lines of text around cursor
+set scrolloff=10 " Lines of text around cursor
 set number
 set shell=zsh
 set mouse=a
@@ -38,7 +38,7 @@ set noshowmode " Don't show which mode disabled for PowerLine
 set autoread " Detect when a file is changed
 set cmdheight=1
 set tm=350 " Timeout length of key combination presses
-set mat=2 " How many tenths of a second to blink
+set mat=1 " How many tenths of a second to blink
 
 set ignorecase " Enable ignore case
 set smartcase " When using caps, ignore ic
@@ -115,10 +115,10 @@ set number relativenumber
 set nu rnu
 set cursorline
 set cursorcolumn
-hi CursorLine term=bold cterm=standout cterm=bold
-"hi CursorColumn term=bold cterm=bold
+hi CursorLine term=bold cterm=bold
+hi CursorLine ctermbg=237
+hi CursorColumn ctermbg=237
 set linebreak
-"set wrap!
 set incsearch
 
 " The matchit plugin makes the % command work better, but it is not backwards
@@ -138,6 +138,10 @@ nmap <space>w :w!<cr>
 nmap <space>x :x!<cr>
 nmap <space>q :q<cr>
 nmap <space>qq :qa<cr>
+nmap <space>[ :set background=light<cr> :hi CursorColumn ctermbg=251<cr> :hi CursorLine ctermbg=251<cr>
+"nnoremap <space>[[ :hi CursorColumn ctermbg=251<cr> :hi CursorLine ctermbg=251<cr>
+nmap <space>] :set background=dark<cr> :hi CursorColumn ctermbg=237<cr> :hi CursorLine ctermbg=237<cr>
+"nnoremap <space>]] :hi CursorColumn ctermbg=237<cr> :hi CursorLine ctermbg=237<cr>
 nnoremap <space>/ :source ~/.vimrc<cr>
 nnoremap <space>\ :nohlsearch<cr>
 nnoremap <space><c-f> :FZF -e<cr>
@@ -197,7 +201,7 @@ endif
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
-    let &t_SR = "\e[3 q" 			" Vertical bar in insert mode
+    let &t_SR = "\e[3 q"                		" Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" 	" Block in normal mode
     let &t_SI = "\e[3 q"                     	" blink underline
 endif
@@ -210,5 +214,7 @@ endif
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+au WinLeave * set nocursorcolumn
+au WinEnter * set cursorcolumn
 
 " }}}
