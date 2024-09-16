@@ -9,9 +9,10 @@ source "$HOME/.config/sketchybar/mResources/mIcons.sh"
 # 􀾭 􀾬   􀌋  􀌌 􀼅 􀼆  􀜤    􁶺    􀯏􂂆  􂃈      􁇵  􀙚 􀰇  􀓅   􀈕    􀈖
 # 􀂮􀂤􀂠􀂠􀂜􀂶≠
 # ("􀀜" "􀨺" "􀍋" "􀩼" "􀩼" "􀈗" "􀈗" "􀌍" "􀊕")
+# space_icons=("􀀜" "􀌋" "􀜤" "􀩼" "􀈕" "􀾬" "􀙚" "􀈖" "􀾭")
 
 spaces=("main" "cloud" "nle" "code" "files" "media" "code2" "files2" "media2")
-space_icons=("􀀜" "􀌋" "􀜤" "􀩼" "􀈕" "􀾬" "􀙚" "􀈖" "􀾭")
+space_icons=("􀀜" "􀀼" "􀀾" "􀘗" "􀁂" "􀁄" "􀁆" "􀁈" "􀁊")
 space_colors=("$PURPLE" "$SKY" "$RED" "$TURQUOISE" "$ACCENTGOLDII" "$HOTPINK" "$TURQUOISE" "$ACCENTGOLDII" "$SPOTIFYGREEN")
 for i in "${!space_icons[@]}"
 do
@@ -19,7 +20,7 @@ do
   space=(
     space="$sid"
     icon="${space_icons[i]}"
-    icon.font="SF Pro:Bold:17.0"
+    icon.font="SF Pro:Bold:19.0"
     y_offset=1
     icon.padding_left=3
     icon.padding_right=3

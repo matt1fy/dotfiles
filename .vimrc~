@@ -138,10 +138,10 @@ nmap <space>w :w!<cr>
 nmap <space>x :x!<cr>
 nmap <space>q :q<cr>
 nmap <space>qq :qa<cr>
-nmap <space>[ :set background=light<cr>
-nnoremap <space>[[ :hi CursorColumn ctermbg=251<cr> :hi CursorLine ctermbg=251<cr>
-nmap <space>] :set background=dark<cr>
-nnoremap <space>]] :hi CursorColumn ctermbg=237<cr> :hi CursorLine ctermbg=237<cr>
+nmap <space>[ :set background=light<cr> :hi CursorColumn ctermbg=251<cr> :hi CursorLine ctermbg=251<cr>
+"nnoremap <space>[[ :hi CursorColumn ctermbg=251<cr> :hi CursorLine ctermbg=251<cr>
+nmap <space>] :set background=dark<cr> :hi CursorColumn ctermbg=237<cr> :hi CursorLine ctermbg=237<cr>
+"nnoremap <space>]] :hi CursorColumn ctermbg=237<cr> :hi CursorLine ctermbg=237<cr>
 nnoremap <space>/ :source ~/.vimrc<cr>
 nnoremap <space>\ :nohlsearch<cr>
 nnoremap <space><c-f> :FZF -e<cr>

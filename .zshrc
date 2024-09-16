@@ -145,7 +145,7 @@ alias vivi="vi ~/.vimrc"
 # Aliases for the lolz
 alias whoisgod="whoami"
 
-export FZF_DEFAULT_OPTS='--height=60% --preview="cat {}" --preview-window=right:45%:wrap'
+export FZF_DEFAULT_OPTS='--height=90% --preview="cat {}" --preview-window=right:45%:wrap'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

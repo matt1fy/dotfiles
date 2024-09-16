@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Path to my Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/powerlevel10k/powerlevel10k.zsh-theme # Load powerlevel10k
@@ -142,16 +145,13 @@ alias vivi="vi ~/.vimrc"
 # Aliases for the lolz
 alias whoisgod="whoami"
 
-export FZF_DEFAULT_OPTS='--height=60% --preview="cat {}" --preview-window=right:45%:wrap'
+export FZF_DEFAULT_OPTS='--height=75% --preview="cat {}" --preview-window=right:45%:wrap'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # Load personal prompt config
-
-# Path to my Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 eval "$(starship init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"

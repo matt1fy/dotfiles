@@ -32,16 +32,16 @@ scripts < 0x21 : dark-mode off
 scripts < 0x1B : yabai -m config focus_follows_mouse off
 scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
 # Connect sidecar, F11, F12
-scripts < hyper + fn - f13 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
+scripts < fn - f13 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
 # Same but on M1 Air
 #scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="on" || betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="off"
 # Connect Virtual sidecar Was 0x1B an 0x18
-scripts < hyper + fn - f12 : betterdisplaycli set -namelike=virtual -connected=on
-scripts < hyper + fn - f11 : betterdisplaycli set -namelike=virtual -connected=off
+scripts < fn - f12 : betterdisplaycli set -namelike=virtual -connected=on
+scripts < fn - f11 : betterdisplaycli set -namelike=virtual -connected=off
 # Yabai SKHD Sketchybar refresh
 scripts < fn - f1 : sketchybar --reload && borders active_color="0xffca1b04"
 scripts < fn - f2 : yabai --restart-service
-scripts < fn - f4 : skhd --restart-service
+scripts < fn - f4 : skhd --restart-service && borders active_color="0xffca1b04" && sketchybar --bar border_color="0xffccff00"
 
 # Resize Window
 default < ctrl + shift - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
@@ -68,17 +68,22 @@ default < hyper + fn - f3 : yabai -m window east --stack $(yabai -m query --wind
 default < lcmd + lshift + lctrl - 0x52 : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus || yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id'); sketchybar --trigger window_focus
 
 # Open Apps
-scripts < hyper - f : open ~/
-scripts < hyper - a : open /Applications
-scripts < hyper - p : open ~/Downloads
-scripts < hyper - c : open -a "iTerm"
-scripts < hyper - d : open -a "DaVinci Resolve"
-scripts < hyper - b : open -a "Safari"
-scripts < hyper - s : open -a "Spotify"
-scripts < hyper - o : open -a "Obsidian"
-scripts < hyper - t : open -a "Telegram"
-scripts < hyper - y : open -a "kitty"
-scripts < hyper - v : open -a "BetterDisplay"
+scripts < f : open ~/
+scripts < a : open /Applications
+scripts < p : open ~/Downloads
+
+scripts < c : open -a "iTerm" # C for commandline
+scripts < y : open -a "kitty" # Y in kittY
+scripts < u : open -a "Disk Utility"
+scripts < v : open -a "BetterDisplay" # V for visual
+scripts < h : open -a "Hyperkey"
+scripts < k : open -a "KeyCastr"
+
+scripts < d : open -a "DaVinci Resolve"
+scripts < b : open -a "Safari" # B for browser
+scripts < s : open -a "Spotify"
+scripts < o : open -a "Obsidian"
+scripts < t : open -a "Telegram"
 
 # Right hand focus spaces
 default < hyper - 0x52 : yabai -m space --focus next || yabai -m space --focus first
