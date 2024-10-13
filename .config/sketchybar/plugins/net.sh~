@@ -26,7 +26,7 @@ case $service in
       | sed -n "s/Current Wi-Fi Network: \(.*\)/\1/p")
     case $ssid in
       *iPhone*) icon=$NET_HOTSPOT;;
-      "")       icon=$NET_DISCONNECTED; color=$PASTELRED;;
+      "")       icon=$NET_DISCONNECTED; color=$HOTRED;;
       *)        icon=$NET_WIFI;;
     esac;;
 
@@ -36,7 +36,7 @@ case $service in
     test -n "$wifi_device" && status=$( \
       networksetup -getairportpower "$wifi_device" | awk '{print $NF}')
     icon=$(test "$status" = On && echo "$NET_DISCONNECTED" || echo "$NET_OFF")
-    color=$PASTELRED;;
+    color=$HOTRED;;
 esac
 
-sketchybar --animate sin 5 --set "$NAME" icon="$icon" icon.color="$color"
+sketchybar --animate sin 5 --set "$NAME" icon="$icon" icon.color="$color" icon.padding_left=5 icon.padding_right=5

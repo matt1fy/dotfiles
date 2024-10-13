@@ -20,15 +20,15 @@ do
   space=(
     space="$sid"
     icon="${space_icons[i]}"
+    icon.highlight_color="$ICON_COLOR"
     icon.font="SF Pro:Bold:19.0"
     y_offset=1
     icon.padding_left=3
     icon.padding_right=3
-    icon.highlight_color="${space_colors[i]}"
     icon.padding_left=1
     icon.padding_right=3
-    icon.background.color="${space_colors[i]}"
-    icon.background.height=4
+    icon.background.color="$LIMEYGREEN"
+    icon.background.height=3.5
     icon.background.y_offset=-5
     icon.background.corner_radius=1.8
     icon.background_shadow=on
@@ -41,3 +41,6 @@ do
   )
   sketchybar --add space space."$sid" center --set space."$sid" "${space[@]}"
 done
+
+
+#   icon.highlight_color="${space_colors[i]}"

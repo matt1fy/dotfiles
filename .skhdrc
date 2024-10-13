@@ -1,7 +1,7 @@
 # Modes
-:: default : sketchybar --bar border_color="0xffccff00" && sketchybar --bar color="0x732a2735" && borders active_color="0xffccff00" && sketchybar --set apple.logo icon.color="0xffffffff" && borders background_color="0x732a2735" && yabai -m config active_window_opacity 1.0 && yabai -m config normal_window_opacity 0.95
+:: default : sketchybar --bar border_color="0xe679b9a3" && sketchybar --bar color="0x732a2735" && borders active_color="0xffccff00" && sketchybar --set apple.logo icon.color="0xffffffff" && borders background_color="0x732a2735" && yabai -m config active_window_opacity 1.0 && yabai -m config normal_window_opacity 0.95
 :: scripts @ : sketchybar --bar border_color="0xff4fffe7" && sketchybar --bar color="0x820d679b" && borders active_color="0xff4fffe7" && sketchybar --set apple.logo icon.color="0xff4fffe7" && borders background_color="0xff1b9de2"
-:: lockdown @ : sketchybar --bar border_color="0xffca1b04" && sketchybar --bar color="0xd9140e14" && borders active_color="0xffca1b04" && sketchybar --set apple.logo icon.color="0xffca1b04" && borders background_color="0xff5b0909" && yabai -m config active_window_opacity 0.45 && yabai -m config normal_window_opacity 0.45
+:: lockdown @ : sketchybar --bar border_color="0xffca1b04" && sketchybar --bar color="0xd9140e14" && borders active_color="0xffca1b04" && sketchybar --set apple.logo icon.color="0xffca1b04" && borders background_color="0x732a2735" && yabai -m config active_window_opacity 1.00 && yabai -m config normal_window_opacity 0.95
 
 # :: default : sketchybar --bar border_color="0xff$(awk -F /ACCENT_COLOR1/{print $NF} ~/.config/sketchybar/mResources/mColors.sh)" && sketchybar --bar color="0x$(awk -F '/BAR_COLOR1/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)" && borders active_color="0xff$(awk -F '/ACCENT_COLOR1/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)" && sketchybar --set apple.logo icon.color="0xffffffff" && borders background_color="0x$(awk -F '/BAR_COLOR1/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)"
 # :: scripts @ : sketchybar --bar border_color="0xff$(awk -F /ACCENT_COLOR2/{print $NF} ~/.config/sketchybar/mResources/mColors.sh)" && sketchybar --bar color="0x$(awk -F '/BAR_COLOR2/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)" && borders active_color="0xff$(awk -F '/ACCENT_COLOR2/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)" && sketchybar --set apple.logo icon.color="0xff$(awk -F /ACCENT_COLOR2/{print $NF} ~/.config/sketchybar/mResources/mColors.sh)" && borders background_color="0x$(awk -F '/BAR_COLOR2/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh)"
@@ -14,16 +14,15 @@
 # awk '/ICON_COLOR/{print $NF}' ~/.config/sketchybar/mResources/mColors.sh
 
 # Colors GRAYTRANS=0x732a2735 FROSTEDGLASS=0x4dbad2d2, VAMPBLACK=0xd9140e14, LIMEYGREEN=0xffccff00, HOTRED=0xffca1b04, DEEPRED=0xff5b0909
-# NTS, USE AWK MOVING FORWARD
 
 # Mode Navigation
 hyper - z ; scripts
 hyper - q ; lockdown
 scripts < escape ; default
-scripts < fn - f3 ; default
+scripts < return ; default
 scripts < hyper - q ; lockdown
-lockdown < ctrl - d ; default
-lockdown < ctrl - z ; scripts
+lockdown < shift + cmd + ctrl - d ; default
+lockdown < shift + cmd + ctrl - z ; scripts
 
 # Sys Control
 # Dark mode, Hyper - brackets
@@ -32,22 +31,22 @@ scripts < 0x21 : dark-mode off
 scripts < 0x1B : yabai -m config focus_follows_mouse off
 scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
 # Connect sidecar, F11, F12
-scripts < fn - f13 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
+scripts < fn - f12 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
 # Same but on M1 Air
 #scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="on" || betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="off"
 # Connect Virtual sidecar Was 0x1B an 0x18
-scripts < fn - f12 : betterdisplaycli set -namelike=virtual -connected=on
-scripts < fn - f11 : betterdisplaycli set -namelike=virtual -connected=off
+scripts < fn - f11 : betterdisplaycli set -namelike=virtual --connected=on
+scripts < fn - f10 : betterdisplaycli set -namelike=virtual --connected=off
 # Yabai SKHD Sketchybar refresh
-scripts < fn - f1 : sketchybar --reload && borders active_color="0xffca1b04"
-scripts < fn - f2 : yabai --restart-service
-scripts < fn - f4 : skhd --restart-service && borders active_color="0xffca1b04" && sketchybar --bar border_color="0xffccff00"
+scripts < fn - f1 : sketchybar --reload && sketchybar --bar border_color="0xffca1b04" && borders active_color="0xffca1b04" && borders background_color="0xffca1b04"
+scripts < fn - f2 : yabai --restart-service && sketchybar --bar border_color="0xffff9853" && sketchybar --bar color="0x732a2735" && sketchybar --set apple.logo icon.color="0xffffffff" && borders active_color="0xffff9853" && borders background_color="0xffff9853"
+scripts < fn - f3 : skhd --restart-service && sketchybar --bar border_color="0xe679b9a3" && borders active_color="0xffca1b04"
 
 # Resize Window
-default < ctrl + shift - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
-default < ctrl + shift - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
-default < ctrl + shift - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
-default < ctrl + shift - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+default < ctrl + shift - h : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
+default < ctrl + shift - l : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0 || yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+default < ctrl + shift - k : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+default < ctrl + shift - j : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
 
 # Float Window
 scripts < hyper - 0x12 : yabai -m window --toggle float --grid 1:1:0:0:1:1
@@ -58,7 +57,7 @@ scripts < hyper - 0x17 : yabai -m window --toggle float --grid 5:5:3:0:2:5
 scripts < hyper - 0x16 : yabai -m window --toggle float --grid 5:5:-1:0:2:2
 
 # Swap window positions, Hyper - 1 TODO make them work for vertical splits too pls
-default < hyper + fn - f1 : yabai -m window --warp west && yabai -m window --focus east || yabai -m window --warp east --focus && yabai -m window --focus west || yabai -m window --warp north && yabai -m window --focus south || yabai -m window --warp south --focus && yabai -m window --focus north
+default < hyper + fn - f1 : yabai -m window --warp west && yabai -m window --focus east || yabai -m window --warp east && yabai --focus west && yabai -m window --focus west || yabai -m window --warp north && yabai -m window --focus south || yabai -m window --warp south --focus && yabai -m window --focus north
 default < hyper - 0x41 : yabai -m window --warp west && yabai -m window --focus east || yabai -m window --warp east --focus && yabai -m window --focus west || yabai -m window --warp north && yabai -m window --focus south || yabai -m window --warp south --focus && yabai -m window --focus north
 # Scroll through stacks, Hyper - 2
 default < hyper + fn - f2 : yabai -m window --focus stack.next || yabai -m window --focus stack.first
@@ -77,6 +76,7 @@ scripts < y : open -a "kitty" # Y in kittY
 scripts < u : open -a "Disk Utility"
 scripts < v : open -a "BetterDisplay" # V for visual
 scripts < h : open -a "Hyperkey"
+default < shift + cmd + ctrl - h : open -a "Hyperkey"
 scripts < k : open -a "KeyCastr"
 
 scripts < d : open -a "DaVinci Resolve"
@@ -84,6 +84,14 @@ scripts < b : open -a "Safari" # B for browser
 scripts < s : open -a "Spotify"
 scripts < o : open -a "Obsidian"
 scripts < t : open -a "Telegram"
+
+# Create and Destroy Spaces
+scripts < shift + fn - f9 : yabai -m space --create 1
+scripts < shift + ctrl + fn - f9 : yabai -m space --destroy 3
+scripts < shift + fn - f10 : yabai -m space --create 2
+scripts < shift + ctrl + fn - f10 : yabai -m space --destroy 2
+scripts < shift + fn - f11 : yabai -m space --create 3
+scripts < shift + ctrl + fn - f11 : yabai -m space --destroy 1
 
 # Right hand focus spaces
 default < hyper - 0x52 : yabai -m space --focus next || yabai -m space --focus first
@@ -103,7 +111,11 @@ default < hyper - 0x12 : yabai -m space --focus one
 default < hyper - 0x13 : yabai -m space --focus two
 default < hyper - 0x14 : yabai -m space --focus three
 default < hyper - 0x15 : yabai -m space --focus four
-default < hyper - 0x17 : yabai -m space --focus four
+default < hyper - 0x17 : yabai -m space --focus five
+default < hyper - 0x16 : yabai -m space --focus six
+default < hyper - 0x1A : yabai -m space --focus seven
+default < hyper - 0x1C : yabai -m space --focus eight
+default < hyper - 0x19 : yabai -m space --focus nine
 
 # Throw windows to spaces, Shft+Cmd+Ctrl - Keypad
 default < lcmd + lshift + lctrl - 0x54 : yabai -m window --space two --focus;\

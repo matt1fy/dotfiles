@@ -19,6 +19,7 @@ export VAMPBLACK=0xd9140e14 #140e14
 # Colors
 export PASTELPURPLE=0xb3715eac #715eac
 export PURPLE=0xffc46aff #c46aff
+export LIGHTPURPLE=0xffd6b0f4 #d6b0f4
 export SOFTPURPLE=0xfff1e1ff #f1e1ff
 export HOTPINK=0xe6e02e85 #e02e85
 export MAGENTA=0xffb16286 #b16286
@@ -33,11 +34,13 @@ export GREEN=0xff98971a #98971a
 export TURQUOISE=0xff0eb295 #0eb295
 export TEAL=0xe679b9a3 #79b9a3
 export BRIGHTBLUE=0xff4b9cff #4b9cff
+export LIGHTBLUE=0xffafeeff #afeeff
 export BLUE=0xff458588 #458588
 export LIMEYGREEN=0xffccff00 #ccff00
 export LIMEYGREEND=0xffb6dd20 #b6dd20
 export HOTRED=0xffca1b04 #ca1b04
 export DEEPRED=0xff5b0909 #5b0909
+export HOTREDALPHA=0x73ca1b04 #ca1b04
 
 # Gold Accents
 export ACCENTGOLDI=0xffede0a9 #ede0a9

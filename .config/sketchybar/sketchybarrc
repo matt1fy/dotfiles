@@ -15,14 +15,14 @@ plugin_dir="$HOME/.config/sketchybar/plugins"
 # Menu bar config
 bar_config=(
   position=top
-  height=30
-  y_offset=3
-  border_width=5.5
+  height=32
+  y_offset=2
+  border_width=2
   blur_radius=50
-  margin=2
-  corner_radius=9
-  padding_left=10
-  padding_right=10
+  margin=3
+  corner_radius=14
+  padding_left=3
+  padding_right=3
   shadow=on
 )
 
@@ -53,8 +53,8 @@ background_defaults=(
 popup_defaults=(
   popup.height=30
   popup.horizontal=false
-  popup.background.border_color="$BLACK"
-  popup.background.border_width=3
+  popup.background.border_color="$TEAL"
+  popup.background.border_width=2
   popup.background.color="$BLACK"
   popup.background.corner_radius=7
   popup.background.shadow.drawing=on
@@ -73,6 +73,19 @@ sketchybar --bar "${bar_config[@]}" \
 source "$item_dir/itemClock.sh"
 source "$item_dir/itemStack.sh"
 
+bracketLeft=(
+    background.color="$GRAYTRANS"
+    background.border_color="$TEAL"
+    background.border_width=1.5
+    background.height=26.0
+    background.corner_radius=16
+    background.margin=-2
+    background.padding_left=20
+    background.padding_right=5
+)
+sketchybar --add bracket bracketLeft clock stack stack_sep \
+    --set bracketLeft "${bracketLeft[@]}"
+
 # Center items
 source "$item_dir/itemSpaces.sh"
 source "$item_dir/itemCenterdiv.sh"
@@ -86,21 +99,48 @@ swifty=(
 	icon.color="$OFFWHITE"
 	label.drawing=off
 	y_offset=1.7
-	background.padding_left=1.5
-	background.padding_right=1.5
+	background.padding_left=1
+	background.padding_right=10
 )
 
 sketchybar --add item swifty center	\
 	   --set swifty "${swifty[@]}"
 
+bracketCenter=(
+    background.color="$GRAYTRANS"
+    background.border_color="$TEAL"
+    background.border_width=1.5
+    background.height=26.0
+    background.corner_radius=16
+    background.margin=-2
+    background.padding_left=5
+    background.padding_right=5
+)
+sketchybar --add bracket bracketCenter apple.logo front_app swifty \
+    --set bracketCenter "${bracketCenter[@]}"
+
 # Right items
 source "$item_dir/itemBattery.sh"
 source "$item_dir/itemNet.sh"
+source "$item_dir/itemStats.sh"
 source "$item_dir/itemStatsMain.sh"
 #source "$item_dir/itemDiskmonitor.sh"
 #source "$item_dir/itemAlias.sh"
 source "$item_dir/itemVolume.sh"
 #source "$item_dir/itemSpotify.sh"
+
+bracketRight=(
+    background.color="$GRAYTRANS"
+    background.border_color="$TEAL"
+    background.border_width=1.5
+    background.height=26.0
+    background.corner_radius=16
+    background.margin=-2
+    background.padding_left=5
+    background.padding_right=20
+)
+sketchybar --add bracket bracketRight battery net cpu.percent memory disk separator_right volume \
+    --set bracketRight "${bracketRight[@]}"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

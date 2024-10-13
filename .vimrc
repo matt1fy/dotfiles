@@ -158,10 +158,10 @@ nnoremap <space>c vwhy
 nnoremap <space>v vwhp
 
 inoremap jj <esc>
+inoremap kk <esc>
 inoremap <space><cr> <esc>
 
 " Temp leader strings
-nmap <space>hu /Volumes/Heilo/"01 Clients"/Kanpai/2024-09-11_Kanpai_SepTiktok/03_Assets
 
 " }}}
 

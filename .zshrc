@@ -141,6 +141,7 @@ alias viqmk="vi ~/qmk_firmware/keyboards/keychron/k4_pro/ansi"
 alias viobs="vi ~/Documents/"\""Obsidian Vault"\""/"\""matts 2nd brain"\"""
 alias videf="vi ~/.config/sketchybar/mResources"
 alias vivi="vi ~/.vimrc"
+alias v="vi"
 
 # Aliases for the lolz
 alias whoisgod="whoami"

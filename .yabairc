@@ -29,11 +29,11 @@ yabai -m config                                    \
     split_ratio                  0.53              \
     split_type                   auto              \
     auto_balance                 off               \
-    top_padding                  09                \
-    bottom_padding               08                \
-    left_padding                 08                \
-    right_padding                08                \
-    window_gap                   12                \
+    top_padding                  06                \
+    bottom_padding               05                \
+    left_padding                 05                \
+    right_padding                05                \
+    window_gap                   05                \
     layout                       bsp               \
     mouse_modifier               ctrl              \
     mouse_action1                move              \
@@ -45,16 +45,16 @@ yabai -m config                                    \
 # RULES
 # Exclude problematic apps from being managed
 yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|SF Symbols|ColorSlurp|Disk Utility)$" manage=off
-yabai -m rule --add app="^(Creative Cloud|Font Book|Logi Options+|Proton VPN)$" manage=off
+yabai -m rule --add app="^(Creative Cloud|Font Book|Google Drive|Logi Options+|Proton VPN|QMK Toolbox)$" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 # yabai -m rule --add label="Save As" app="^Zed$" title="Save As" manage=off
 
-yabai -m rule --add app="iTerm" role="AXTextField" subrole="AXStandardWindow" manage=on
-yabai -m rule --add app="iTerm2" role="AXTextField" subrole="AXStandardWindow" manage=on
-yabai -m rule --add app="DaVinci Resolve" role="AXTextField" subrole="AXStandardWindow" manage=on
+# yabai -m rule --add app="iTerm" role="AXTextField" subrole="AXStandardWindow" manage=on
+# yabai -m rule --add app="iTerm2" role="AXTextField" subrole="AXStandardWindow" manage=on
+# yabai -m rule --add app="DaVinci Resolve" role="AXTextField" subrole="AXStandardWindow" manage=on
 
 # Set finder spaces to horizontal
 # yabai -m config --space 8 split_type=vertical
@@ -82,7 +82,7 @@ yabai -m space 9 --label nine
 
 yabai -m rule --apply
 
-Borders hidpi=on width=12.0 blur_radius=100 inactive_color=$INACTIVE
+Borders hidpi=on width=4.0 blur_radius=100 inactive_color=$TEAL
 # active_color=$ACCENT_COLOR1 background_color=$BAR_COLOR1
 
 echo "yabai and borders configuration loaded.."
