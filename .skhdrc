@@ -16,13 +16,13 @@
 # Colors GRAYTRANS=0x732a2735 FROSTEDGLASS=0x4dbad2d2, VAMPBLACK=0xd9140e14, LIMEYGREEN=0xffccff00, HOTRED=0xffca1b04, DEEPRED=0xff5b0909
 
 # Mode Navigation
-hyper - z ; scripts
+hyper - a ; scripts
 hyper - q ; lockdown
 scripts < escape ; default
 scripts < return ; default
 scripts < hyper - q ; lockdown
 lockdown < shift + cmd + ctrl - d ; default
-lockdown < shift + cmd + ctrl - z ; scripts
+lockdown < shift + cmd + ctrl - a ; scripts
 
 # Sys Control
 # Dark mode, Hyper - brackets
@@ -30,17 +30,20 @@ scripts < 0x1E : dark-mode on
 scripts < 0x21 : dark-mode off
 scripts < 0x1B : yabai -m config focus_follows_mouse off
 scripts < 0x18 : yabai -m config focus_follows_mouse autofocus
+
 # Connect sidecar, F11, F12
 scripts < fn - f12 : betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="on" || betterdisplaycli toggle --UUID="056F0447-8A77-4E13-920F-4C89514E2698" --connected="off"
 # Same but on M1 Air
 #scripts < hyper + fn - f12 : betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="on" || betterdisplaycli toggle --UUID="7F5A3D8E-E693-2D3A-C90B-A2661D91F570" --connected="off"
+
 # Connect Virtual sidecar Was 0x1B an 0x18
 scripts < fn - f11 : betterdisplaycli set -namelike=virtual --connected=on
 scripts < fn - f10 : betterdisplaycli set -namelike=virtual --connected=off
+
 # Yabai SKHD Sketchybar refresh
-scripts < fn - f1 : sketchybar --reload && sketchybar --bar border_color="0xffca1b04" && borders active_color="0xffca1b04" && borders background_color="0xffca1b04"
-scripts < fn - f2 : yabai --restart-service && sketchybar --bar border_color="0xffff9853" && sketchybar --bar color="0x732a2735" && sketchybar --set apple.logo icon.color="0xffffffff" && borders active_color="0xffff9853" && borders background_color="0xffff9853"
-scripts < fn - f3 : skhd --restart-service && sketchybar --bar border_color="0xe679b9a3" && borders active_color="0xffca1b04"
+scripts < 0x12 : sketchybar --reload && sketchybar --bar border_color="0xffca1b04" && borders active_color="0xffca1b04" && borders background_color="0xffca1b04"
+scripts < 0x13 : yabai --restart-service && sketchybar --bar border_color="0xffff9853" && sketchybar --bar color="0x732a2735" && sketchybar --set apple.logo icon.color="0xffffffff" && borders active_color="0xffff9853" && borders background_color="0xffff9853"
+scripts < 0x14 : skhd --restart-service && sketchybar --bar border_color="0xe679b9a3" && borders active_color="0xffca1b04"
 
 # Resize Window
 default < ctrl + shift - h : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0

@@ -116,9 +116,9 @@ alias skhdr="skhd --restart-service"
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias trasha="rm -rf ~/.Trash/*" # Not spiting my ex but her name fits LOL
 alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*" # Global volumes
+alias trashcache="/Users/mattmohamed/TrashTheCache/TrashTheCache.sh"
 alias qmkcompv1="qmk compile -kb keychron/v1_max/ansi_encoder -km matt1fy2"
 alias qmkflashv1="qmk flash -kb keychron/v1_max/ansi_encoder -km matt1fy2"
-
 
 # Show me
 alias showlaunchagents="ls -a ~/Library/LaunchAgents"
