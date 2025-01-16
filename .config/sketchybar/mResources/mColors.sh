@@ -18,7 +18,7 @@ export VAMPBLACK=0xd9140e14 #140e14
 
 # Colors
 export PASTELPURPLE=0xb3715eac #715eac
-export PURPLE=0xffc46aff #c46aff
+export PURPLE=0xffc576e5 #0xc576e5
 export LIGHTPURPLE=0xffd6b0f4 #d6b0f4
 export SOFTPURPLE=0xfff1e1ff #f1e1ff
 export HOTPINK=0xe6e02e85 #e02e85

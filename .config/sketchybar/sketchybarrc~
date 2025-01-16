@@ -131,7 +131,7 @@ source "$item_dir/itemVolume.sh"
 
 bracketRight=(
     background.color="$GRAYTRANS"
-    background.border_color="$TEAL"
+    background.border_color="$LIGHTPURPLE"
     background.border_width=1.5
     background.height=26.0
     background.corner_radius=16
@@ -139,7 +139,7 @@ bracketRight=(
     background.padding_left=5
     background.padding_right=20
 )
-sketchybar --add bracket bracketRight battery battery2 net cpu.percent memory disk separator_right volume \
+sketchybar --add bracket bracketRight battery net cpu.percent memory disk separator_right volume \
     --set bracketRight "${bracketRight[@]}"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)

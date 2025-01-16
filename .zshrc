@@ -119,6 +119,8 @@ alias trashapromax="sudo rm -rf /Volumes/*/.Trashes/501?*" # Global volumes
 alias trashcache="/Users/mattmohamed/TrashTheCache/TrashTheCache.sh"
 alias qmkcompv1="qmk compile -kb keychron/v1_max/ansi_encoder -km matt1fy2"
 alias qmkflashv1="qmk flash -kb keychron/v1_max/ansi_encoder -km matt1fy2"
+alias k4pro="-kb keychron/k4_pro/ansi -km matt1fy"
+alias v1max="-kb keychron/v1_max/ansi_encoder -km matt1fy2"
 
 # Show me
 alias showlaunchagents="ls -a ~/Library/LaunchAgents"

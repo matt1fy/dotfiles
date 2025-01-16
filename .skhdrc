@@ -20,6 +20,7 @@ hyper - a ; scripts
 hyper - q ; lockdown
 scripts < escape ; default
 scripts < return ; default
+scripts < 0x32 ; default
 scripts < hyper - q ; lockdown
 lockdown < shift + cmd + ctrl - d ; default
 lockdown < shift + cmd + ctrl - a ; scripts
@@ -41,8 +42,9 @@ scripts < fn - f11 : betterdisplaycli set -namelike=virtual --connected=on
 scripts < fn - f10 : betterdisplaycli set -namelike=virtual --connected=off
 
 # Yabai SKHD Sketchybar refresh
-scripts < 0x12 : sketchybar --reload && sketchybar --bar border_color="0xffca1b04" && borders active_color="0xffca1b04" && borders background_color="0xffca1b04"
-scripts < 0x13 : yabai --restart-service && sketchybar --bar border_color="0xffff9853" && sketchybar --bar color="0x732a2735" && sketchybar --set apple.logo icon.color="0xffffffff" && borders active_color="0xffff9853" && borders background_color="0xffff9853"
+scripts < 0x12 : skhd -k "escape";\
+                yabai --restart-service && sketchybar --bar border_color="0xe679b9a3" && sketchybar --bar color="0x732a2735" && borders active_color="0xffccff00" && sketchybar --set apple.logo icon.color="0xffffffff" && borders background_color="0x732a2735"
+scripts < 0x13 : sketchybar --reload && sketchybar --bar border_color="0xffca1b04" && borders active_color="0xffca1b04" && borders background_color="0xffca1b04"
 scripts < 0x14 : skhd --restart-service && sketchybar --bar border_color="0xe679b9a3" && borders active_color="0xffca1b04"
 
 # Resize Window
@@ -71,8 +73,9 @@ default < lcmd + lshift + lctrl - 0x52 : yabai -m window east --stack $(yabai -m
 
 # Open Apps
 scripts < f : open ~/
-scripts < a : open /Applications
+scripts < a : open /Volumes/
 scripts < p : open ~/Downloads
+scripts < g : open ~/Library/CloudStorage/GoogleDrive-matt@heilo.sg/"Shared drives"
 
 scripts < c : open -a "iTerm" # C for commandline
 scripts < y : open -a "kitty" # Y in kittY
