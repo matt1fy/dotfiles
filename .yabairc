@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+# Created by Matt1fy
+
+# LOAD SCRIPTING ADDITIONS
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+source "$HOME/.config/sketchybar/mResources/mColors.sh" # Load my defined colors
+
+# Global settings
+yabai -m config                                    \
+    external_bar                 all:32:0          \
+    menubar_opacity              1.0               \
+    mouse_follows_focus          on                \
+    focus_follows_mouse          autofocus         \
+    display_arrangement_order    horizontal        \
+    window_origin_display        cursor            \
+    window_placement             second_child      \
+    window_zoom_persist          on                \
+    window_shadow                float             \
+    window_animation_duration    0.14              \
+    window_animation_easing      ease_in_out_expo  \
+    window_opacity_duration      0.1               \
+    window_opacity               on                \
+    active_window_opacity        1.0               \
+    normal_window_opacity        0.89              \
+    insert_feedback_color        $ORANGELITE	   \
+    split_ratio                  0.53              \
+    split_type                   auto              \
+    auto_balance                 off               \
+    top_padding                  06                \
+    bottom_padding               05                \
+    left_padding                 05                \
+    right_padding                05                \
+    window_gap                   05                \
+    layout                       bsp               \
+    mouse_modifier               ctrl              \
+    mouse_action1                move              \
+    mouse_action2                resize            \
+    mouse_drop_action            stack
+
+#fav opacity was 0.73
+
+# RULES
+# Exclude problematic apps from being managed
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|SF Symbols|ColorSlurp|Disk Utility)$" manage=off
+yabai -m rule --add app="^(Creative Cloud|Font Book|Google Drive|Logi Options+|Proton VPN|QMK Toolbox)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+# yabai -m rule --add label="Save As" app="^Zed$" title="Save As" manage=off
+
+# yabai -m rule --add app="iTerm" role="AXTextField" subrole="AXStandardWindow" manage=on
+# yabai -m rule --add app="iTerm2" role="AXTextField" subrole="AXStandardWindow" manage=on
+# yabai -m rule --add app="DaVinci Resolve" role="AXTextField" subrole="AXStandardWindow" manage=on
+
+# Set finder spaces to horizontal
+# yabai -m config --space 8 split_type=vertical
+
+# yabai -m rule --add app="^(Safari|Zed)$" space=1
+# yabai -m rule --add app="^Davinci Resolve$" manage=tile
+# yabai -m rule --add app="^iTerm$" sticky=off
+# yabai -m rule --add app="^Finder$" space=5
+# yabai -m rule --add app="^Spotify$" space=6
+
+# Set up spaces after applying all configuration
+# source "$HOME/.config/yabai/_spaces.sh"
+
+yabai -m space 1 --label one
+yabai -m space 2 --label two
+yabai -m space 3 --label three
+yabai -m space 4 --label four
+yabai -m space 5 --label five
+yabai -m space 6 --label six
+yabai -m space 7 --label seven
+yabai -m space 8 --label eight
+yabai -m space 9 --label nine
+
+# yabai -m space 3 layout stack
+
+yabai -m rule --apply
+
+Borders hidpi=on width=4.0 blur_radius=100 inactive_color=$TEAL
+# active_color=$ACCENT_COLOR1 background_color=$BAR_COLOR1
+
+echo "yabai and borders configuration loaded.."

@@ -9,9 +9,10 @@ source "$HOME/.config/sketchybar/mResources/mIcons.sh"
 # 􀾭 􀾬   􀌋  􀌌 􀼅 􀼆  􀜤    􁶺    􀯏􂂆  􂃈      􁇵  􀙚 􀰇  􀓅   􀈕    􀈖
 # 􀂮􀂤􀂠􀂠􀂜􀂶≠
 # ("􀀜" "􀨺" "􀍋" "􀩼" "􀩼" "􀈗" "􀈗" "􀌍" "􀊕")
+# space_icons=("􀀜" "􀌋" "􀜤" "􀩼" "􀈕" "􀾬" "􀙚" "􀈖" "􀾭")
 
 spaces=("main" "cloud" "nle" "code" "files" "media" "code2" "files2" "media2")
-space_icons=("􀀜" "􀌋" "􀜤" "􀩼" "􀈕" "􀾬" "􀙚" "􀈖" "􀾭")
+space_icons=("􀀜" "􀀼" "􀀾" "􀘗" "􀁂" "􀁄" "􀁆" "􀁈" "􀁊")
 space_colors=("$PURPLE" "$SKY" "$RED" "$TURQUOISE" "$ACCENTGOLDII" "$HOTPINK" "$TURQUOISE" "$ACCENTGOLDII" "$SPOTIFYGREEN")
 for i in "${!space_icons[@]}"
 do
@@ -19,15 +20,15 @@ do
   space=(
     space="$sid"
     icon="${space_icons[i]}"
-    icon.font="SF Pro:Bold:17.0"
+    icon.highlight_color="$ICON_COLOR"
+    icon.font="SF Pro:Bold:19.0"
     y_offset=1
     icon.padding_left=3
     icon.padding_right=3
-    icon.highlight_color="${space_colors[i]}"
     icon.padding_left=1
     icon.padding_right=3
-    icon.background.color="${space_colors[i]}"
-    icon.background.height=4
+    icon.background.color="$LIMEYGREEN"
+    icon.background.height=3.5
     icon.background.y_offset=-5
     icon.background.corner_radius=1.8
     icon.background_shadow=on
@@ -40,3 +41,6 @@ do
   )
   sketchybar --add space space."$sid" center --set space."$sid" "${space[@]}"
 done
+
+
+#   icon.highlight_color="${space_colors[i]}"

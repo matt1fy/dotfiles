@@ -20,8 +20,8 @@ export NET_THUNDERBOLT=􀒗  # Thunderbolt bridge connected
 export NET_DISCONNECTED=􀙇 # Network disconnected, but Wi-Fi turned on
 export NET_OFF=􀙈          # Network disconnected, Wi-Fi turned off
 
-#export MEMORY=􀧖
-export DISK=􀨪
+export DISK=󱛟
+#export DISK=􀨪
 
 export BATTERY=
 export CPU=

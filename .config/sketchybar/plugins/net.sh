@@ -39,4 +39,4 @@ case $service in
     color=$HOTRED;;
 esac
 
-sketchybar --animate sin 5 --set "$NAME" icon="$icon" icon.color="$color"
+sketchybar --animate sin 5 --set "$NAME" icon="$icon" icon.color="$color" icon.padding_left=5 icon.padding_right=5

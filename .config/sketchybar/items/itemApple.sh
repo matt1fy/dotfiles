@@ -10,7 +10,7 @@ apple_logo=(
 	icon.font="SF Pro:Black:18.0"
 	icon.color="$WHITE"
 	y_offset=1
-	background.padding_left=-3
+	background.padding_left=10
 	background.padding_right=3
 	label.drawing=off
 	click_script="$POPUP_CLICK_SCRIPT"
@@ -119,4 +119,4 @@ sketchybar --add item apple.logo center                \
                                                        \
            --add item apple.lock popup.apple.logo      \
            --set apple.lock "${apple_lock[@]}"         \
-           --subscribe mouse.exited.global
+           --subscribe apple_logo mouse.exited.global

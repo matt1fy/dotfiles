@@ -4,5 +4,6 @@
 
 sketchybar  --add item center.div center \
             --set center.div icon=􀥤 \
-                             icon.font="Avenir Next:Heavy:18" \
+                             icon.font="Avenir Next:Light:20" \
+                             icon.color="$TEAL" \
                              y_offset=1
